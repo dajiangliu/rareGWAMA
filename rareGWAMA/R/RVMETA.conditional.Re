@@ -1,6 +1,5 @@
 RVMETA.conditional <- function(scenario=c('gene','region'),score.stat.file,cov.file,gene,test=c('GRANVIL','WSS','SKAT-O','SKAT','VT'),maf.cutoff,no.boot=10000,alternative=c('two.sided','greater','less'),alpha=0.05,extra.pars=list(option=character(0),ix.X1=integer(0),ix.X2=integer(0)))
   {
-      if(length(test)>1) test <- "GRANVIL";##set to default;
       capture.output(raw.data.all <- rvmeta.readData( score.stat.file, cov.file, gene));
       if(length(raw.data.all)==0)
           return(list(p.value=NA,
@@ -72,7 +71,6 @@ RVMETA.conditional <- function(scenario=c('gene','region'),score.stat.file,cov.f
                   }
                   var.Y.list[[ii]] <- 1;
                   mean.Y.list[[ii]] <- 0;
-                  maf.vec.list.all[[ii]] <- rm.na((1-raw.data$maf[[ii]]));## this is to be commented out for the general release;
                   pos.list.all[[ii]] <- (raw.data$pos);
                   anno.list.all[[ii]] <- (raw.data$anno);
               }

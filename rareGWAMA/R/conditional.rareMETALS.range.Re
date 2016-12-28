@@ -76,7 +76,6 @@ conditional.rareMETALS.range <- function(range.name=NULL,score.stat.file,cov.fil
         ix.var <- c(ix.var,match(known.variant.vec,raw.data$pos));
         ix.var <- sort(unique(ix.var));
         ix.tmp <- match(known.variant.vec,(raw.data$pos)[ix.var]);
-        ix.var <- c(ix.var[-ix.tmp],ix.var[ix.tmp]);##make sure the last few variants are to be conditioned on;
         if(length(ix.var)==length(ix.tmp))
           {
             res.null$gene.name <- range.name[kk];
@@ -111,7 +110,6 @@ conditional.rareMETALS.range <- function(range.name=NULL,score.stat.file,cov.fil
               alt.list[[ii]] <- (raw.data$alt)[[ii]][ix.var];
               anno.list[[ii]] <- (raw.data$anno)[ix.var];
             }
-          ##flip of alleles if needed
           if(length(ix.pop)>1)
             {
               for(ii in 1:length(ix.var))
@@ -151,7 +149,6 @@ conditional.rareMETALS.range <- function(range.name=NULL,score.stat.file,cov.fil
           
           maf.vec <- rep(0,length(af.vec.list[[1]]));
           af.vec <- maf.vec;
-          mac.vec <- 0;ac.vec <- 0;##no.sample <- 0;
           for(ii in 1:length(ix.pop))
             {
               af.vec <- af.vec+(af.vec.list[[ii]])*(2*N.list[[ii]]);

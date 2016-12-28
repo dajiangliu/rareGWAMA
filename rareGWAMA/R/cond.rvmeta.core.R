@@ -53,8 +53,6 @@ get.conditional.score.stat <- function(ustat,X.T.times.X,N,ix.candidate,ix.known
     X2.T.times.Y <- X.T.times.Y[ix.X2];
     X1.T.times.Y <- X.T.times.Y[ix.X1];
     ix.type <- ix.X2;
-    ## if(!is.null(impState)) ix.type <- which(impState==0);
-    ## if(is.null(impState)) ix.type <- ix.X2;
     ix.X2.type <- intersect(ix.type,ix.X2);
     X2.T.times.X1 <- matrix(X.T.times.X[ix.X2,ix.X1],nrow=length(ix.X2),ncol=length(ix.X1));
     X1.T.times.X2 <- matrix(X.T.times.X[ix.X1,ix.X2],nrow=length(ix.X1),ncol=length(ix.X2));
@@ -74,8 +72,6 @@ get.conditional.score.stat <- function(ustat,X.T.times.X,N,ix.candidate,ix.known
     U <- X1.T.times.Y-X1.T.times.X2%*%gamma.est;
     if(length(ix.X2.type)>0) {
         V <- X1.T.times.X1-X1.T.times.X2.type%*%ginv(X2.T.times.X2.type)%*%X2.T.times.X1.type;
-        ##sigma.sq.est <- var.Y-2/N*t(gamma.est)%*%X2.T.times.Y+1/N*t(gamma.est)%*%X2.T.times.X2%*%(gamma.est);    
-        ##sigma.sq.est <- var.Y-(t(X2.T.times.Y.type)%*%ginv(X2.T.times.X2.type)%*%X2.T.times.Y.type)/N;
     }
     if(length(ix.X2.type)==0) {
         V <- X1.T.times.X1;        
@@ -98,9 +94,6 @@ get.conditional.score.stat <- function(ustat,X.T.times.X,N,ix.candidate,ix.known
 get.conditional.score.stat.RE <- function(ustat,X.T.times.X,N,ix.candidate,ix.known) {
     ustat.candidate <- ustat[ix.candidiate];
     ustat.known <- ustat[ix.known];
-    ## P.Z <- diag(nrow(Z.tilde))-Z.tilde%*%ginv(t(Z.tilde)%*%Z.tilde)%*%t(Z.tilde);
-    ## ustatX.post <- t(X)%*%P.Z%*%(Y-Z%*%betaZ.post);
-    ## ustatX.post.vec[ii] <- ustatX.post;
     conditional.ustat <- ustat.candidate-X.T.times.X[ix.candidate,ix.known]%*%ginv(X.T.times.X[ix.known,ix.known])%*%ustat.known;
    
 }

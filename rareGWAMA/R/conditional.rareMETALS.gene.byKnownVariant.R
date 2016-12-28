@@ -12,7 +12,6 @@ conditional.rareMETALS.gene.byKnownVariant <- function(ANNO,score.stat.file,cov.
     capture.output(raw.data.all <- rvmeta.readDataByRange( score.stat.file,NULL,candidate.variant.tabix.vec.tmp));
 
     res.list <- list();
-    ## Get tabix for variants in gene
     candidate.variant.tabix.vec <- character(0);
     for(kk in 1:length(raw.data.all))
       {
@@ -34,10 +33,3 @@ conditional.rareMETALS.gene.byKnownVariant <- function(ANNO,score.stat.file,cov.
     return(res);    
   }
 
-## r2cov.mat <- function(r2.mat,maf.vec)
-##   {
-##     var.vec <- sqrt(maf.vec*(1-maf.vec)*2);
-##     var.mat <- (var.vec%*%t(var.vec));
-##     cov.mat <- r2.mat*var.mat;
-##     return(cov.mat);
-##   }

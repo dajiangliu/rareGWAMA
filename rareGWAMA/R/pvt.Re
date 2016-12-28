@@ -11,7 +11,6 @@ pvt.core <- function(x,mu,sigma,alternative=c('two.sided','greater'))
             sum.ii <- 0;
             for(jj in 1:ncol(mat.ii))
               {
-                sigma.jj <- sigma[mat.ii[,jj],mat.ii[,jj]];## of dimension ii x ii;
                 sum.ii <- sum.ii+as.numeric(pmvnorm(upper=rep(-x,ii),lower=rep(-Inf,ii),mean=mu[mat.ii[,jj]],sigma=sigma.jj));
               }
             if(ii%%2==1)
@@ -31,7 +30,6 @@ pvt.core <- function(x,mu,sigma,alternative=c('two.sided','greater'))
             sum.ii <- 0;
             for(jj in 1:ncol(mat.ii))
               {
-                sigma.jj <- sigma[mat.ii[,jj],mat.ii[,jj]];## of dimension ii x ii;
                 
                 sum.ii <- sum.ii+2*as.numeric(pmvnorm(upper=rep(-sqrt(x),ii),lower=rep(-Inf,ii),mean=mu[mat.ii[,jj]],sigma=sigma.jj));
             }

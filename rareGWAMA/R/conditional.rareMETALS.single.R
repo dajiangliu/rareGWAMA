@@ -97,7 +97,6 @@ conditional.rareMETALS.single <- function(candidate.variant.vec,score.stat.file,
                 maf.single.out[kk] <- NA;
                 anno.single.out[kk] <- paste(raw.data$anno[ix.candidate],collapse=",");
                 p.value.known.single.out[kk] <- NA;
-                anno.known.single.out[kk] <- paste(raw.data$anno[ix.candidate],sep=",",collapse=",")##paste(anno.known.variant.vec[kk],sep=',',collapse=',');
                 pos.ref.alt.known.single.out[kk] <- paste(raw.data$pos,raw.data$ref[[ix.gold]],raw.data$alt[[ix.gold]],sep="/",collapse=",");
               }
           }

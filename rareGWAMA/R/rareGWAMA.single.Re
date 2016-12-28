@@ -183,7 +183,6 @@ rareGWAMA.single.multiAllele <- function(score.stat.file,imp.qual.file=NULL,cor.
     dat <- GWAMA.formatData(raw.data.all,raw.imp.qual,impQualWeight,impQual.lb,col.impqual);
     pos <- unique(gsub("/[0-9]+","",dat$pos));
     res.assoc.tmp <- sapply(pos,multiAlleleAssoc,dat=dat,corMultiAllele.mat=corMultiAllele.mat);
-    ##res.formatted <- matrix(unlist(unlist(res.assoc.tmp)),byrow=TRUE,ncol=10);
     res.formatted <- do.call(rbind,res.assoc.tmp);
     colnames(res.formatted) <- c("POS","REF","ALT","AF","STAT","PVALUE","BETA","SD","N","DIRECTION");
     return(list(res.formatted=res.formatted,
@@ -201,7 +200,6 @@ rareGWAMA.single.multiAllele <- function(score.stat.file,imp.qual.file=NULL,cor.
 #' @export 
 multiAlleleAssoc <- function(pos,dat,corMultiAllele.mat) {
     res.formatted <- matrix(rep(NA,10),nrow=1);
-    print(pos);
     ix <- which(corMultiAllele.mat$chrpos==pos);
     if(length(ix)==1) {
         ref.cor <- unlist(strsplit(corMultiAllele.mat$ref[ix],split=','));
@@ -279,25 +277,23 @@ multiAlleleAssoc <- function(pos,dat,corMultiAllele.mat) {
             direction.meta <- apply(dat$direction.mat,1,paste,sep="",collapse="");
             
             af.meta <- rowSums((dat$af.mat)*(dat$nSample.mat),na.rm=T)/rowSums((dat$nSample.mat),na.rm=T);
-            print(ref.alt.both);
-            print(ref.alt.cor);
             
             ix <- match(ref.alt.both,ref.alt.cor);
-            print(ix);
-            print(cor.mat);
             if(length(ix)>0) {
                 cor.mat <- matrix(as.numeric(cor.mat[ix,ix]),nrow=length(ix),ncol=length(ix));
                 ustat.meta.tmp <- rowSums((dat$ustat.mat)*(dat$w.mat),na.rm=TRUE);
                 vstat.sq.meta.tmp <- rowSums((dat$w.mat)^2*(dat$vstat.mat)^2,na.rm=TRUE);
-                print(cor.mat);
                 S <- matrix(0,nrow=nrow(cor.mat),ncol=ncol(cor.mat));
                 diag(S) <- sqrt(vstat.sq.meta.tmp);
-                
+                diag(cor.mat) <- 0;
+                cor.mat[which(abs(cor.mat)>0.9,arr.ind=TRUE)] <- 0;
+                diag(cor.mat) <- 1;
+                cor.mat <- regMat(cor.mat,0.1);
                 V <- S%*%cor.mat%*%S
                 beta.est.meta <- as.vector(ginv(V)%*%ustat.meta.tmp);
                 beta.sd.meta <- as.vector(sqrt(diag(ginv(V))));
                 statistic.meta <- (beta.est.meta/beta.sd.meta)^2;
-                p.value.meta <- pchisq(statistic.meta,df=1,lower.tail=TRUE);
+                p.value.meta <- pchisq(statistic.meta,df=1,lower.tail=FALSE);
                 nSample.meta <- rowSums(dat$nSample.mat,na.rm=T);
                 uniq.allele <- function(x) {x.tab <- table(x);return(paste(names(x.tab),sep=',',collapse=','))}
                 

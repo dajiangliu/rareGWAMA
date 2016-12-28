@@ -120,15 +120,6 @@ rareMETALS.gene.group <- function(score.stat.file,cov.file,range,range.name,test
                 {
                   for(jj in (1:length(ix.pop))[-ix.gold])
                     {
-                      ## if(is.na(ref.gold[ii]) & !is.na(ref.list[[jj]][ii]))
-                      ##   {
-                      ##     ref.list[[ix.gold]][ii] <- ref.list[[jj]][ii];
-                      ##     alt.list[[ix.gold]][ii] <- alt.list[[jj]][ii];
-                      ##   }
-                      ## if((is.na(alt.list[[ix.gold]][ii]) | (alt.list[[ix.gold]][ii])=='0' | (alt.list[[ix.gold]][ii])==".") & (!is.na(alt.list[[jj]][ii]) & (alt.list[[jj]][ii]!="0") & (alt.list[[jj]][ii]!=".")))
-                      ##   {
-                      ##     alt.list[[ix.gold]][ii] <- alt.list[[jj]][ii];
-                      ##   }
                       if(!is.na(ref.list[[jj]][ii]) & !is.na(ref.list[[ix.gold]][ii]))
                         {
                           if(ref.list[[jj]][ii]==alt.gold[ii] & (ref.list[[jj]][ii])!=(ref.gold[ii]))
@@ -252,10 +243,6 @@ rareMETALS.gene.group <- function(score.stat.file,cov.file,range,range.name,test
               top.singlevar.refalt[kk] <- paste(c(res[[kk]]$ref[ix.best],res[[kk]]$alt[ix.best]),sep="/",collapse="/");
               top.singlevar.pval[kk] <- format(res[[kk]]$singlevar.pval.vec[ix.best],digits=out.digits);
               top.singlevar.af[kk] <- format(res[[kk]]$singlevar.af.vec[ix.best],digits=out.digits);
-              ##  [1] "ref"      "alt"      "nSample"  "af"       "ac"       "callrate"
-              ##  [7] "hwe"      "nref"     "nhet"     "nalt"     "ustat"    "vstat"
-              ## [13] "effect"   "pVal"     "cov"      "pos"      "anno"     "covXZ"
-              ## [19] "covZZ"    "hweCase"  "hweCtrl"  "afCase"   "afCtrl"  
               ref.out <- list(res[[kk]]$ref);
               alt.out <- list(res[[kk]]$alt);
               nSample.out <- list(rep(res[[kk]]$nSample,length(ref.out[[1]])));

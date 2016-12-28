@@ -9,12 +9,6 @@
 rareMETALS.cleanScore <- function(score.stat.file,refaltList,hwe.cutoff,callrate.cutoff,af.diff.max=0.7,checkAF=TRUE)
     {
         res <- read.table(gzfile(score.stat.file),as.is=TRUE,header=TRUE,fill=TRUE);
-        ##[1] "CHROM"              "POS"                "REF"
-        ##[4] "ALT"                "N_INFORMATIVE"      "AF"
-        ##[7] "INFORMATIVE_ALT_AC" "CALL_RATE"          "HWE_PVALUE"
-        ##[10] "N_REF"              "N_HET"              "N_ALT"
-        ##[13] "U_STAT"             "SQRT_V_STAT"        "ALT_EFFSIZE"
-        ##[16] "PVALUE"             "ANNO"               "ANNO_FULL"
         pos.vec <- paste(res$CHROM,res$POS,sep=":");
         pos.both <- set.intersect(refaltList$pos,pos.vec);
         ix.match <- match(pos.both,pos.vec);

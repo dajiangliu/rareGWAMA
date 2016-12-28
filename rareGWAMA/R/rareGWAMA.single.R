@@ -183,7 +183,6 @@ rareGWAMA.single.multiAllele <- function(score.stat.file,imp.qual.file=NULL,cor.
     dat <- GWAMA.formatData(raw.data.all,raw.imp.qual,impQualWeight,impQual.lb,col.impqual);
     pos <- unique(gsub("/[0-9]+","",dat$pos));
     res.assoc.tmp <- sapply(pos,multiAlleleAssoc,dat=dat,corMultiAllele.mat=corMultiAllele.mat);
-    ##res.formatted <- matrix(unlist(unlist(res.assoc.tmp)),byrow=TRUE,ncol=10);
     res.formatted <- do.call(rbind,res.assoc.tmp);
     colnames(res.formatted) <- c("POS","REF","ALT","AF","STAT","PVALUE","BETA","SD","N","DIRECTION");
     return(list(res.formatted=res.formatted,
@@ -291,9 +290,6 @@ multiAlleleAssoc <- function(pos,dat,corMultiAllele.mat) {
                 diag(cor.mat) <- 1;
                 cor.mat <- regMat(cor.mat,0.1);
                 V <- S%*%cor.mat%*%S
-                ## print(ustat.meta.tmp);
-                ## print(V);
-                ## print(ginv(V));
                 beta.est.meta <- as.vector(ginv(V)%*%ustat.meta.tmp);
                 beta.sd.meta <- as.vector(sqrt(diag(ginv(V))));
                 statistic.meta <- (beta.est.meta/beta.sd.meta)^2;

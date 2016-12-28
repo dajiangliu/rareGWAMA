@@ -112,12 +112,6 @@ GWAMA.single <- function(score.stat.file,range,alternative=c('two.sided','greate
                           raw.data$nhet[[ii]][ix.var] <- NA;
                           raw.data$nalt[[ii]][ix.var] <- NA;
                       }
-                  ## U.stat <- U.stat+rm.na(raw.data$ustat[[ii]][ix.var]);
-                  ## V.stat.sq <- V.stat.sq+(rm.na(raw.data$vstat[[ii]][ix.var]))^2;
-                  ## nref.var <- nref.var+rm.na(raw.data$nref[[ii]][ix.var]);
-                  ## nalt.var <- nalt.var+rm.na(raw.data$nalt[[ii]][ix.var]);
-                  ## nhet.var <- nhet.var+rm.na(raw.data$nhet[[ii]][ix.var]);
-                  ## no.sample.mat[ii,ix.var] <- (raw.data$nSample[[ii]][ix.var]);                  
                   if(!is.na(raw.data$ustat[[ii]][ix.var]))
                       {
                           if(raw.data$ustat[[ii]][ix.var]>0) direction.by.study.var[ii] <- "+";
@@ -204,7 +198,6 @@ GWAMA.single <- function(score.stat.file,range,alternative=c('two.sided','greate
     effect.out <- list(beta1.est);
     pVal.out <- list(p.value);
     pos.out <- raw.data$pos;
-    ##anno.out <- list(anno.gold);
     cov.out <- list(matrix(nrow=0,ncol=0));
     integratedData <- list();
     integratedData[[1]] <- list(ref=ref.out,
@@ -229,7 +222,6 @@ GWAMA.single <- function(score.stat.file,range,alternative=c('two.sided','greate
                                 hweCtrl=list(rep(NA,length(ref.out[[1]]))),
                                 afCtrl=list(rep(NA,length(ref.out[[1]]))),
                                 afCase=list(rep(NA,length(ref.out[[1]]))));
-                                ##anno=anno.out);
     
     
     return(list(p.value=p.value,

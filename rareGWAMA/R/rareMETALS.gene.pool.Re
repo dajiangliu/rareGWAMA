@@ -172,7 +172,6 @@ rareMETALS.gene.pool <- function(ANNO,score.stat.file,cov.file,gene,test='GRANVI
                 }
               if(test=='VT')
                 {
-                  ##res.kk <- (c(rvmeta.CMH(score.stat.vec.list,maf.vec.list,cov.mat.list,var.Y.list,N.list,alternative,no.boot,alpha,rv.test='VT',extra.pars=list())));
                   res.kk <- (c(rvmeta.approx.mega(score.stat.vec.list,maf.vec.list,cov.mat.list,mean.Y.list,var.Y.list,N.list,alternative,no.boot,alpha,rv.test='VT',extra.pars=list())));
                   res[[kk]] <- c(res.kk,
                                  list(anno=anno.list[[ix.gold]],

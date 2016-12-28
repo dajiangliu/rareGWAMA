@@ -26,7 +26,6 @@ rvmeta.CMH <- function(score.stat.vec.list,maf.vec.list,cov.mat.list,var.Y.list,
           }
           score.stat.vec.list[[ii]] <- rm.na(score.stat.vec.list[[ii]]);
           
-          ##cov.mat.list[[ii]] <- as.matrix(rm.na(cov.mat.list[[ii]]));
           if(length(vstat.list)==0)
           {
               X.T.times.Y.ii <- (sqrt(N.mat[ii,]))*(score.stat.vec.list[[ii]])*sqrt(diag(cov.mat.list[[ii]]))*sqrt(var.Y.list[[ii]]);

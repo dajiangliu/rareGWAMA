@@ -24,7 +24,6 @@ rvmeta.CMH.vt <- function(X.T.times.Y.centered.list,X.T.times.X.list,mac.vec,cov
     diag(X.T.times.X.NA) <- NA;
     maf.TH <- sort(unique(maf.vec));
     max.TH <- extra.pars$max.TH;
-    ##max.TH <- 10;
     if(length(max.TH)>0)
       {
         ix.tmp <- as.integer(seq(1,length(maf.TH),length=max.TH));

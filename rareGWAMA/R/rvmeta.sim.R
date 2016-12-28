@@ -43,14 +43,12 @@ rvmeta.sim <- function(pars.sim)
     no.case <- no.sample/2;no.ctrl <- no.sample/2;
     multi.dat.ped <- list();
     multi.sumstat <- list();
-    ##scale.vec <- seq(0.5,1.5,length=no.pop);
     if(length(scale.vec)==0) 
       scale.vec <- rnorm(no.pop,1,0.5);
     if(trait=='Q' | trait=='Q.cond')
       {
         for(ii in 1:no.pop)
           {
-            ##id.pool <- sample(1:no.pop,1);
             hap.mat <- hap.pool[(pop.size*(ii-1)+1):(pop.size*ii),];
             genotype <- matrix(NA,nrow=no.sample[ii],ncol=ncol(hap.mat));
             phenotype <- vector(length=no.sample[ii]);

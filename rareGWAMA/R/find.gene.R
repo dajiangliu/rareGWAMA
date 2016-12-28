@@ -5,7 +5,6 @@
 #' @export
 find.gene.chrpos <- function(candidate.gene)
   {
-    ##this function will return the tabix range for the gene and 
     data(refFlat.resource);
     res <- res.refFlat;
     gene <- res$gene;
@@ -26,7 +25,6 @@ find.gene.chrpos <- function(candidate.gene)
 get.tabix.range <- function(variant.vec)
   {
     variant.list <- variant.vec;
-    ##variant.list <- strsplit(variant.list,split=",");
     range.vec <- 0;
     variant.list.split <- matrix(unlist(strsplit(variant.list,split=":")),ncol=2,byrow=TRUE);
     variant.list.split[,2] <- paste(variant.list.split[,2],variant.list.split[,2],sep='-');
@@ -81,7 +79,6 @@ find.top.variant <- function(candidate.variant.vec,window.size,singlevar.result,
     pos.candidate <- as.numeric(chr.pos.tmp[,2]);
     
     chrpos.result <- matrix(unlist(strsplit(singlevar.result$POS,split=":")),byrow=TRUE,ncol=2);
-    ##chrpos.result <- cbind(singlevar.result$CHROM,singlevar.result$POS);
     chr.result <- as.numeric(chrpos.result[,1]);
     pos.result <- as.numeric(chrpos.result[,2]);
     

@@ -26,7 +26,6 @@ rareMETALS.single.correctRefAlt <- function(score.stat.file,cov.file,range,refal
     if(length(extra.par$ix.gold)==0) ix.gold <- 1;
     raw.data <- raw.data.all[[1]];
     raw.data.ori <- raw.data;
-    ##log.mat <- matrix("",nrow=length(raw.data$ref[[ix.gold]]),ncol=length(raw.data$ref));
     if(length(extra.par$QC.par)>0) 
       raw.data <- QC(raw.data,extra.par$QC.par,cov=0);
     log.mat <- raw.data$log.mat;
@@ -81,10 +80,8 @@ rareMETALS.single.correctRefAlt <- function(score.stat.file,cov.file,range,refal
         ix.include <- rep(0,length(ix.pop));
         for(ii in 1:length(ix.pop))
           {
-            ##determine whether a variant is monomorphic:
             
             if(!is.na(raw.data.ori$ref[[ii]][ix.var]) | !is.na(raw.data.ori$alt[[ii]][ix.var]))
-                {                ##check if AF is 0;if AF is 0, no QC;
                     if(rm.na(raw.data$af[[ii]][ix.var])==0 | rm.na(raw.data$af[[ii]][ix.var])==1)
                         {
                             U.stat <- U.stat+rm.na(raw.data$ustat[[ii]][ix.var]);
@@ -133,7 +130,6 @@ rareMETALS.single.correctRefAlt <- function(score.stat.file,cov.file,range,refal
                 if(mono)
                   {
                     ix.include[ii] <- 1;
-                    ##log.mat[ix.var,ii] <- paste(log.mat[ix.var,ii],"0",sep="",collapse="");
                   }
                 if(!match.ref.alt & !flip.ref.alt & !mono)
                   {

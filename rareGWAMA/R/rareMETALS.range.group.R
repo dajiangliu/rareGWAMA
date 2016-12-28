@@ -221,7 +221,6 @@ rareMETALS.range.group.core <- function(score.stat.file,cov.file,range,range.nam
               }
               
               N.mat <- matrix(N.mat[,ix.rare],nrow=nrow(N.mat),ncol=length(ix.rare));
-              ##approximate correlation matrix between variants;
               covG <- matrix(0,nrow=length(ix.rare),ncol=length(ix.rare));
               nSample.covG <- covG;
               

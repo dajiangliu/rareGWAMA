@@ -3,9 +3,6 @@ conditional.rareMETALS.gene.basic <- function(ANNO,score.stat.file,cov.file,gene
     extra.pars <- list(ix.gold=ix.gold,
                        out.digits=out.digits,
                        QC.par=list(callrate.cutoff=callrate.cutoff,hwe.cutoff=hwe.cutoff));
-    ##res.find <- find.gene(variant.list,window.size);
-    ## range.vec <- res.find$range.vec;
-    ## gene.name <- res.find$gene.vec;
     gene.name <- gene;
     tabix.gene <- find.gene.chrpos(gene);
     tabix.known.variant <- get.tabix.range(known.variant.vec);
@@ -68,7 +65,6 @@ conditional.rareMETALS.gene.basic <- function(ANNO,score.stat.file,cov.file,gene
         ix.var <- c(ix.var,match(variant.list,raw.data$pos));
         ix.var <- sort(unique(ix.var));
         ix.tmp <- match(variant.list,(raw.data$pos)[ix.var]);
-        ix.var <- c(ix.var[-ix.tmp],ix.var[ix.tmp]);##make sure the last few variants are to be conditioned on;
         if(length(ix.var)==length(ix.tmp))
           {
             res.null$gene.name <- gene.name[kk];
@@ -136,17 +132,10 @@ conditional.rareMETALS.gene.basic <- function(ANNO,score.stat.file,cov.file,gene
           
           maf.vec <- rep(0,length(af.vec.list[[1]]));
           af.vec <- maf.vec;
-          mac.vec <- 0;ac.vec <- 0;##no.sample <- 0;
           for(ii in 1:length(ix.pop))
             {
-              ## ix.1 <- which(af.vec.list[[ii]]==1);
-              ## if(length(ix.1)>0) {
-              ##   af.vec.list[[ii]][ix.1] <- 0;
-              ##   ac.vec.list[[ii]][ix.1] <- 0;
-              ## }
               af.vec <- af.vec+(af.vec.list[[ii]])*(2*N.list[[ii]]);
               ac.vec <- ac.vec+ac.vec.list[[ii]];
-              ##no.sample <- no.sample+N.list[[ii]];
             }
           af.vec <- af.vec/sum(2*unlist(N.list));
           maf.vec <- af.vec;

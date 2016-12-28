@@ -32,17 +32,6 @@ binary.rareMETALS.single.group <- function(score.stat.file,cov.file,range,refalt
     raw.data$cov <- NULL;
     ix.match <- match(raw.data$pos,refaltList$pos);
     refaltList <- list(pos=refaltList$pos[ix.match],ref=refaltList$ref[ix.match],alt=refaltList$alt[ix.match],af=refaltList$af[ix.match],anno=refaltList$anno[ix.match],af.diff.max=refaltList$af.diff.max,checkAF=refaltList$checkAF);
-    ## if(length(which(is.na(ix.match)))>0)
-    ##     {
-    ##         warning("Some variants in the datasets are not included in the refaltList; Only variants in the refaltList will be used in subsequent meta-analysis");
-    ##         pos.new <- refaltList$pos[ix.match];
-    ##         tabix.new <- get.tabix.range(pos.new); 
-    ##         capture.output(raw.data.all <- rvmeta.readDataByRange( score.stat.file, cov.file, tabix.new));
-    ##         raw.data <- raw.data.all[[1]];
-    ##         raw.data$cov <- NULL;
-    ##         ix.match <- match(raw.data$pos,refaltList$pos);
-    ##         refaltList <- list(pos=refaltList$pos[ix.match],ref=refaltList$ref[ix.match],alt=refaltList$alt[ix.match],af=refaltList$af[ix.match],anno=refaltList$anno[ix.match],af.diff.max=refaltList$af.diff.max,checkAF=refaltList$checkAF);
-    ##     }
     
     if(length(extra.par$QC.par)>0)
         {
@@ -129,12 +118,6 @@ binary.rareMETALS.single.group <- function(score.stat.file,cov.file,range,refalt
                           raw.data$nhet[[ii]][ix.var] <- NA;
                           raw.data$nalt[[ii]][ix.var] <- NA;
                       }
-                  ## U.stat <- U.stat+rm.na(raw.data$ustat[[ii]][ix.var]);
-                  ## V.stat.sq <- V.stat.sq+(rm.na(raw.data$vstat[[ii]][ix.var]))^2;
-                  ## nref.var <- nref.var+rm.na(raw.data$nref[[ii]][ix.var]);
-                  ## nalt.var <- nalt.var+rm.na(raw.data$nalt[[ii]][ix.var]);
-                  ## nhet.var <- nhet.var+rm.na(raw.data$nhet[[ii]][ix.var]);
-                  ## no.sample.mat[ii,ix.var] <- (raw.data$nSample[[ii]][ix.var]);                  
                   if(!is.na(raw.data$ustat[[ii]][ix.var]))
                       {
                           if(raw.data$ustat[[ii]][ix.var]>0) direction.by.study.var[ii] <- "+";
@@ -221,7 +204,6 @@ binary.rareMETALS.single.group <- function(score.stat.file,cov.file,range,refalt
     effect.out <- list(beta1.est);
     pVal.out <- list(p.value);
     pos.out <- raw.data$pos;
-    ##anno.out <- list(anno.gold);
     cov.out <- list(matrix(nrow=0,ncol=0));
     integratedData <- list();
     integratedData[[1]] <- list(ref=ref.out,
@@ -246,7 +228,6 @@ binary.rareMETALS.single.group <- function(score.stat.file,cov.file,range,refalt
                                 hweCtrl=list(rep(NA,length(ref.out[[1]]))),
                                 afCtrl=list(rep(NA,length(ref.out[[1]]))),
                                 afCase=list(rep(NA,length(ref.out[[1]]))));
-                                ##anno=anno.out);
     
     
     return(list(p.value=p.value,

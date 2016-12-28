@@ -13,16 +13,11 @@ prepare.mega.input <- function(dat.ped.list,sumstat.list,ix.pop)
       }
     if(is.na(ix.pop))
       {
-        ##dat.ped <- dat.ped.list[[1]];
-        ##N <- nrow((dat.ped.list[[1]])$genotype);
-        ##maf.vec <- (sumstat.list[[1]])$maf.vec;
-        ##maf.vec <- maf.vec*N;
         for(ii in 1:length(dat.ped.list))
           {          
             maf.vec.list[[ii]] <- sumstat.list[[ii]]$maf.vec;
             covar.mat.list[[ii]] <- integer(0);
           }
-        ##maf.vec <- maf.vec/N;
       }
     return(list(dat.ped.list=dat.ped.list,
                 maf.vec.list=maf.vec.list,
@@ -110,4 +105,3 @@ rm.na <- function(x)
   }
 
 
-##popgen.stat <- function();

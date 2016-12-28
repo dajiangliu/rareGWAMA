@@ -82,13 +82,10 @@ rareMETALS.gene <- function(ANNO,score.stat.file,cov.file,gene,test='GRANVIL',ma
               U.stat <- rm.na(raw.data$ustat[[ii]][ix.var]);
               V.stat <- rm.na(raw.data$vstat[[ii]][ix.var]);
               score.stat.vec.list[[ii]] <- rm.na(U.stat/V.stat);
-              ## to accomomdate new versions of softwares:
-              ## old version of rvtests:
               if(length(raw.data$cov[[ii]])>0)
                 {
                   cov.mat.list[[ii]] <- as.matrix(rm.na(as.matrix(raw.data$cov[[ii]])[ix.var,ix.var]));
                 }
-              ##new version of rvtests:
               if(length(raw.data$cov[[ii]])==0)
                 {
                   covXX.list[[ii]] <- matrix(rm.na(raw.data$cov[[ii]])[ix.var,ix.var],nrow=length(ix.var),ncol=length(ix.var));
@@ -145,14 +142,8 @@ rareMETALS.gene <- function(ANNO,score.stat.file,cov.file,gene,test='GRANVIL',ma
           maf.vec <- rep(0,length(af.vec.list[[1]]));
           af.vec <- maf.vec;
           mac.vec <- 0;ac.vec <- 0;
-          ##no.sample <- 0;
           for(ii in 1:length(ix.pop))
             {
-              ## ix.1 <- which(af.vec.list[[ii]]==1);
-              ## if(length(ix.1)>0) {
-              ##   af.vec.list[[ii]][ix.1] <- 0;
-              ##   ac.vec.list[[ii]][ix.1] <- 0;
-              ## }
               af.vec <- af.vec+(af.vec.list[[ii]])*(2*N.list[[ii]]);
               ac.vec <- ac.vec+ac.vec.list[[ii]];
             }

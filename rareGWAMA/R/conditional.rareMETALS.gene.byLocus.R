@@ -14,7 +14,6 @@ conditional.rareMETALS.gene.byLocus <- function(ANNO,gene.name,score.stat.file,c
     raw.data.all <- list();
     capture.output(raw.data.all <- rvmeta.readDataByRange(score.stat.file,NULL,candidate.variant.tabix.vec.tmp));
     res.list <- list();
-    ## Get tabix for variants in gene
     candidate.variant.tabix.vec <- character(0);
     
     ix.rm <- integer(0);

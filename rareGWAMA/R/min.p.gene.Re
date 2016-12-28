@@ -86,7 +86,6 @@ min.p.gene <- function(ANNO,score.stat.file,cov.file,gene,test='GRANVIL',maf.cut
                         }
                       if((is.na(alt.list[[ix.gold]][ii]) | (alt.list[[ix.gold]][ii])=='0' | (alt.list[[ix.gold]][ii])==".") & (!is.na(alt.list[[jj]][ii]) & (alt.list[[jj]][ii]!="0") & (alt.list[[jj]][ii]!=".")))
                         {
-                          ##ref.list[[ix.gold]][ii] <- ref.list[[jj]][ii];
                           alt.list[[ix.gold]][ii] <- alt.list[[jj]][ii];
                         }
                       if(!is.na(ref.list[[jj]][ii]) & !is.na(ref.list[[ix.gold]][ii]))
@@ -191,20 +190,9 @@ min.p.gene <- function(ANNO,score.stat.file,cov.file,gene,test='GRANVIL',maf.cut
                                                                                                                                                   maf.vec=maf.vec.rare,mac.vec=mac.vec.rare,max.TH=extra.pars$max.TH))));
                   res[[kk]] <- c(res.kk,res.extra);
                 }
-              ## gene.name.out[kk] <- res[[kk]]$gene.name;
-              ## p.value.out[kk] <- format(res[[kk]]$p.value,digits=4);
-              ## statistic.out[kk] <- format(res[[kk]]$statistic,digits=4);
-              ## no.site.out[kk] <- res[[kk]]$no.site;
-              ## beta1.est.out[kk] <- format(res[[kk]]$beta1.est,digits=4);
-              ## beta1.sd.out[kk] <- format(res[[kk]]$beta1.sd,digits=4);
-              ## maf.cutoff.out[kk] <- format(res[[kk]]$maf.cutoff,digits=4);
-              ## direction.burden.by.study.out[kk] <- res[[kk]]$direction.burden.by.study;
-              ## direction.meta.single.var.out[kk] <- res[[kk]]$direction.meta.single.var;          
-              ## pos.ref.alt.out[kk] <- paste(res[[kk]]$pos,res[[kk]]$ref,res[[kk]]$alt,sep='/',collapse=',');
             }
         }
     }
-    ## res.out <- cbind(gene.name.out,p.value.out,statistic.out,no.site.out,beta1.est.out,beta1.sd.out,maf.cutoff.out,direction.burden.by.study.out,direction.meta.single.var.out,pos.ref.alt.out);
     return(list(res.list=res));
   }
 r2cov.mat <- function(r2.mat,maf.vec)

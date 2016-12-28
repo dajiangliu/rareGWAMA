@@ -13,7 +13,6 @@ RVMETA.pool <- function(scenario=c('gene','region'),score.stat.file,cov.file,gen
     ref <- character(0);
     alt <- ref;
     direction.by.study <- character(0);
-    ##specify gold standard population;
     ix.gold <- extra.pars$ix.gold;
     if(length(extra.pars$ix.gold)==0) {
       ix.gold <- 1;
@@ -131,7 +130,6 @@ RVMETA.pool <- function(scenario=c('gene','region'),score.stat.file,cov.file,gen
               if(length(ix.0)>0) raw.data$af[[ii]][ix.0] <- 1;
               var.Y.list[[ii]] <- 1;
               mean.Y.list[[ii]] <- 0;
-              maf.vec.list[[ii]] <- rm.na((raw.data$af[[ii]])[ix.var]);## this is to be commented out for the general release;
               pos.list[[ii]] <- (raw.data$pos)[ix.var];
               ref.list[[ii]] <- (raw.data$ref)[[ii]][ix.var];
               alt.list[[ii]] <- (raw.data$alt)[[ii]][ix.var];
