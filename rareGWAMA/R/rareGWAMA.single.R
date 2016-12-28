@@ -268,7 +268,6 @@ multiAlleleAssoc <- function(pos,dat,corMultiAllele.mat) {
             dat$af.mat <- af.mat;
             dat$w.mat <- w.mat;
             dat$nSample.mat <- nSample.mat;
-            
             dat$direction.mat <- dat$ustat.mat;
             dat$direction.mat[which(dat$ustat.mat>0,arr.ind=T)] <- "+";
             dat$direction.mat[which(dat$ustat.mat<0,arr.ind=T)] <- "-";
@@ -288,7 +287,7 @@ multiAlleleAssoc <- function(pos,dat,corMultiAllele.mat) {
                 diag(cor.mat) <- 0;
                 cor.mat[which(abs(cor.mat)>0.9,arr.ind=TRUE)] <- 0;
                 diag(cor.mat) <- 1;
-                cor.mat <- regMat(cor.mat,0.1);
+                ##cor.mat <- regMat(cor.mat,0.1);
                 V <- S%*%cor.mat%*%S
                 beta.est.meta <- as.vector(ginv(V)%*%ustat.meta.tmp);
                 beta.sd.meta <- as.vector(sqrt(diag(ginv(V))));
