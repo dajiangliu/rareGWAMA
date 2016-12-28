@@ -1,0 +1,62 @@
+cond.rvmeta.core <- function(X.T.times.Y.all,X.T.times.X.all,maf.vec,N,var.Y,ix.X1,ix.X2,rv.test=c('GRANVIL',"WSS","VT","SKAT"),alternative,no.boot,alpha,extra.par=list())
+  {
+    #W~X1 Z~X2 X1|X2
+    X.T.times.Y <- X.T.times.Y.all;
+    X.T.times.X <- X.T.times.X.all;
+    X2.T.times.Y <- X.T.times.Y[ix.X2];
+    X1.T.times.Y <- X.T.times.Y[ix.X1];
+    X2.T.times.X2 <- matrix((X.T.times.X[ix.X2,ix.X2]),nrow=length(ix.X2));
+    X2.T.times.X1 <- matrix(X.T.times.X[ix.X2,ix.X1],nrow=length(ix.X2));
+    X1.T.times.X2 <- matrix(X.T.times.X[ix.X1,ix.X2],nrow=length(ix.X1));
+    X1.T.times.X1 <- matrix(X.T.times.X[ix.X1,ix.X1],nrow=length(ix.X1));
+    ##gamma.est <- as.vector(solve(X2.T.times.X2)%*%X2.T.times.Y);
+    gamma.est <- as.vector(ginv(X2.T.times.X2)%*%X2.T.times.Y);
+    sigma.sq.est <- var.Y-2/N*t(gamma.est)%*%X2.T.times.Y+1/N*t(gamma.est)%*%X2.T.times.X2%*%(gamma.est);
+    U <- X1.T.times.Y-X1.T.times.X2%*%gamma.est;
+    ##V <- X1.T.times.X1-X1.T.times.X2%*%solve(X2.T.times.X2)%*%X2.T.times.X1;
+    V <- X1.T.times.X1-X1.T.times.X2%*%ginv(X2.T.times.X2)%*%X2.T.times.X1;
+    N.list <- list();var.Y.list <- list();N.list <- list();X.T.times.Y.list <- list();maf.vec.list <- list();X.T.times.X.list <- list();cov.mat.list <- list();
+    N.list[[1]] <- N;
+    var.Y.list[[1]] <- as.numeric(sigma.sq.est);
+    X.T.times.Y.list[[1]] <- U;
+    X.T.times.X.list[[1]] <- V;
+    cov.mat.list[[1]] <- V/N;
+    maf.vec.new <- maf.vec[ix.X1];
+    maf.vec.list[[1]] <- maf.vec.new;
+    if(rv.test=='generic')
+      {
+          return(list(X.T.times.Y=U,
+                      X.T.times.X=V*as.numeric(sigma.sq.est),
+                      cov.mat=V*as.numeric(sigma.sq.est)/N,
+                      maf.vec=maf.vec.new));
+      }
+    return(res);
+}
+get.conditional.score.stat <- function(ustat,X.T.times.X,N,ix.candidate,ix.known)
+    {
+        X.T.times.Y <- ustat;
+        ix.X1 <- ix.candidate;
+        ix.X2 <- ix.known;
+        var.Y <- 1;
+        if(length(which(is.na(ustat)))+length(which(is.na(X.T.times.X)))>0)
+            {
+                ##################print(c("is.na",length(which(is.na(ustat))),length(which(is.na(X.T.times.X)))));
+                return(list(conditional.ustat=NA,
+                            conditional.V=NA));
+            }
+        X2.T.times.Y <- X.T.times.Y[ix.X2];
+        X1.T.times.Y <- X.T.times.Y[ix.X1];
+        X2.T.times.X2 <- matrix((X.T.times.X[ix.X2,ix.X2]),nrow=length(ix.X2),ncol=length(ix.X2));
+        X2.T.times.X1 <- matrix(X.T.times.X[ix.X2,ix.X1],nrow=length(ix.X2),ncol=length(ix.X1));
+        X1.T.times.X2 <- matrix(X.T.times.X[ix.X1,ix.X2],nrow=length(ix.X1),ncol=length(ix.X2));
+        X1.T.times.X1 <- matrix(X.T.times.X[ix.X1,ix.X1],nrow=length(ix.X1),ncol=length(ix.X1));
+        ##gamma.est <- as.vector(solve(X2.T.times.X2)%*%X2.T.times.Y);
+        gamma.est <- as.vector(ginv(X2.T.times.X2)%*%X2.T.times.Y);
+        sigma.sq.est <- var.Y-2/N*t(gamma.est)%*%X2.T.times.Y+1/N*t(gamma.est)%*%X2.T.times.X2%*%(gamma.est);
+        U <- X1.T.times.Y-X1.T.times.X2%*%gamma.est;
+        ##V <- X1.T.times.X1-X1.T.times.X2%*%solve(X2.T.times.X2)%*%X2.T.times.X1;
+        V <- X1.T.times.X1-X1.T.times.X2%*%ginv(X2.T.times.X2)%*%X2.T.times.X1;
+        return(list(conditional.ustat=U,
+                    conditional.V=V));
+
+    }

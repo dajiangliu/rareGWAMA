@@ -1,0 +1,4 @@
+rareMETALS.cleanScore <- function(score.stat.file,refaltList)
+    {
+        
+    }

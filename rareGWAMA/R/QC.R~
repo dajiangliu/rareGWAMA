@@ -1,0 +1,66 @@
+
+QC <- function(raw.data,QC.par,cov=1)
+  {
+    
+      print(c("QC.par",QC.par));
+      hwe.cutoff <- QC.par$hwe.cutoff;
+      callrate.cutoff <- QC.par$callrate.cutoff;
+      if(length(hwe.cutoff)==0) hwe.cutoff <- 0;
+      if(length(callrate.cutoff)==0) callrate.cutoff <- 0;
+      log.mat <- matrix("Untyped",nrow=length(raw.data$ref[[1]]),ncol=length(raw.data$ref));
+      for(ii in 1:length(raw.data$hwe))
+          {
+              hwe.ii <- raw.data$hwe[[ii]];
+              callrate.ii <- raw.data$callrate[[ii]];
+              af.ii <- raw.data$af[[ii]];
+              ix.rm <- which((callrate.ii<callrate.cutoff | hwe.ii<hwe.cutoff ) & af.ii!=0 & af.ii!=1);
+              ix.hwe <- which(hwe.ii<hwe.cutoff & af.ii!=0 & af.ii!=1);
+              ix.callrate <- which(callrate.ii<callrate.cutoff & af.ii!=0 & af.ii!=1);
+              if(length(ix.hwe)>0) {
+                  log.mat[ix.hwe,ii] <- "HWE";
+
+              }
+              if(length(ix.callrate)>0) {
+                  log.mat[ix.callrate,ii] <- "CallRate";
+              }
+              ix.bug <- integer(0);
+              if(cov==1)
+                  {
+
+                      diag.diff <- abs(rm.na(diag(raw.data$cov[[ii]])*raw.data$nSample[[ii]])-rm.na((raw.data$vstat[[ii]])^2));
+                      ix.bug <- which(diag.diff>0.5);
+                      
+                      if(length(ix.bug)>0)
+                          {
+                              print("bug");
+                              ix.rm <- c(ix.rm,ix.bug);
+                              log.mat[ix.bug,ii] <- "bug";
+                          }
+                      
+                  }
+              ix.rm <- unique(ix.rm);              
+              if(length(ix.rm)>0)
+                  {
+                      raw.data$ustat[[ii]][ix.rm] <- NA;
+                      raw.data$vstat[[ii]][ix.rm] <- NA;
+                      print("out");
+                      if(cov==1)
+                          {
+                              print("this is exec");
+                              raw.data$cov[[ii]][ix.rm,ix.rm] <- NA;
+                          }
+                      raw.data$ref[[ii]][ix.rm] <- NA;
+                      raw.data$alt[[ii]][ix.rm] <- NA;
+                      raw.data$nSample[[ii]][ix.rm] <- NA;
+                      raw.data$af[[ii]][ix.rm] <- NA;
+                      raw.data$ac[[ii]][ix.rm] <- NA;
+                      raw.data$nref[[ii]][ix.rm] <- NA;
+                      raw.data$nhet[[ii]][ix.rm] <- NA;
+                      raw.data$nalt[[ii]][ix.rm] <- NA;
+                      raw.data$effect[[ii]][ix.rm] <- NA;
+                      raw.data$pVal[[ii]][ix.rm] <- NA; 
+                  }
+          }
+      raw.data$log.mat <- log.mat;
+      return(raw.data);
+  }

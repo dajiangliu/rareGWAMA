@@ -1,0 +1,4 @@
+Sum <- function(a)
+  {
+    return(sum(a,na.rm=T);
+  }

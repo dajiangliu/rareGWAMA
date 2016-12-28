@@ -1,0 +1,200 @@
+#' Find the chromosomal position for genes;
+#'
+#' @param candidate.gene Name of candidate genes;
+#' @return a list consisiting of tabix, pos.start and pos.end;
+#' @export
+find.gene.chrpos <- function(candidate.gene)
+  {
+    ##this function will return the tabix range for the gene and 
+    data(refFlat.resource);
+    res <- res.refFlat;
+    gene <- res$gene;
+    chr <- res$chr;
+    pos.start <- res$pos.start;
+    pos.end <- res$pos.end;
+    ix <- match(candidate.gene,gene);
+    ######################################################print(ix);
+    tabix <- paste(chr[ix],paste(pos.start[ix],pos.end[ix],sep="-"),sep=":");
+    return(list(tabix=tabix,
+                pos.start=paste(chr[ix],pos.start[ix],sep=":",collapse=":"),
+                pos.end=paste(chr[ix],pos.end[ix],sep=":",collapse=":")));
+  }
+#' change position to tabix range;
+#'
+#' @param variant.vec The vector of variants of the format "1:12345";
+#' @return A vector of tabix ranges;
+#' @export
+get.tabix.range <- function(variant.vec)
+  {
+    variant.list <- variant.vec;
+    ##variant.list <- strsplit(variant.list,split=",");
+    range.vec <- 0;
+    variant.list.split <- matrix(unlist(strsplit(variant.list,split=":")),ncol=2,byrow=TRUE);
+    variant.list.split[,2] <- paste(variant.list.split[,2],variant.list.split[,2],sep='-');
+    range.vec <- paste(variant.list.split[,1],variant.list.split[,2],sep=':',collapse=',');
+    
+    return(range.vec); 
+  }
+
+#' Find nearby genes for a sigificant SNP
+#'
+#' @param known.variant.vec Positions of known variants, in the format of 1:12345
+#' @param window.size The window size. Genes within the window are extracted. Default size is 1e6
+#' @return A vector of genes;
+#' @export
+get.gene.inWindow <- function(known.variant.vec,window.size=1e6)
+  {
+    data(refFlat.resource);
+    res <- res.refFlat;
+    gene <- res$gene;
+    chr <- res$chr;
+    pos.start <- res$pos.start;
+    pos.end <- res$pos.end;
+    variant.list.split <- matrix(unlist(strsplit(known.variant.vec,split=":")),ncol=2,byrow=TRUE);
+    pos.variant.list <- as.integer(variant.list.split[,2]);
+    chr.variant.list <- as.integer(variant.list.split[,1]);
+    pos.window.start <- max(pos.variant.list-window.size);
+    pos.window.end <- min(pos.variant.list+window.size);
+    ix.gene <- which(chr==chr.variant.list[1] & pos.start>pos.window.start & pos.end<pos.window.end);
+    gene.vec <- gene[ix.gene];
+    return(gene.vec);
+  }
+
+
+## find.gene <- function(variant.list,window.size,singlevar.result)
+##   {
+##     data(refFlat.resource);
+##     res <- res.refFlat;
+##     gene <- res$gene;
+##     chr <- res$chr;
+##     pos.start <- res$pos.start;
+##     pos.end <- res$pos.end;
+##     split.variant.list <- matrix(unlist(strsplit(variant.list,split=":")),ncol=2,byrow=TRUE);
+##     chr.variant.list <- as.numeric(split.variant.list[,1]);
+##     pos.variant.list <- as.numeric(split.variant.list[,2]);
+
+##     chr.pos.singlevar <- paste(singlevar.result[,1:2],sep=":");
+##     ix.known.variant <- match(variant.list,chr.pos.single.var);
+##     p.value.known.variant <- singlevar.result[ix.known.variant,3];
+##     range.variant <- paste(paste(chr.variant.list,pos.variant.list,sep=":"),pos.variant.list,sep="-");
+##     range.variant <- paste(range.variant,collapse=",");
+##     if(length(unique(chr.variant.list))>1) stop("Variants are on multiple chromosomes");
+##     pos.window.start <- max(pos.variant.list-window.size);
+##     pos.window.end <- min(pos.variant.list+window.size);
+##     ix.gene <- which(chr==chr.variant.list[1] & pos.start>pos.window.start & pos.end<pos.window.end);
+##     gene.vec <- gene[ix.gene];
+##     candidate.variant.tabix.vec <- paste(paste(chr[ix.gene],pos.start[ix.gene],sep=":"),pos.end[ix.gene],sep="-");
+##     all.variant.tabix.vec <- paste(all.variant.tabix.vec,get.tabix.range(variant.list),sep=',');
+##     return(list(gene.vec=gene.vec,
+##                 p.value.known.variant=p.value.known.variant,
+##                 candidate.variant.tabix.vec=candidate.variant.tabix.vec,
+##                 all.variant.tabix.vec=all.variant.tabix.vec));
+##   }
+
+#' Find top variants in a gene region that satisfy a MAF cutoff;
+#'
+#' @param candidate.vairant.vec The vector of candidate variant;
+#' @param window.size The size of window, default is 1e6
+#' @param singlevar.result Single varinat association results;
+#' @param pval.cutoff The cutoffs of p-values;
+#' @export
+find.top.variant <- function(candidate.variant.vec,window.size,singlevar.result,pval.cutoff=3.1e-7)
+  {
+      chr.pos.tmp <- matrix(unlist(strsplit(candidate.variant.vec,split=":")),byrow=TRUE,ncol=2);
+    
+    chr.candidate <- as.numeric(chr.pos.tmp[,1]);
+    pos.candidate <- as.numeric(chr.pos.tmp[,2]);
+    
+    chrpos.result <- matrix(unlist(strsplit(singlevar.result$POS,split=":")),byrow=TRUE,ncol=2);
+    ##chrpos.result <- cbind(singlevar.result$CHROM,singlevar.result$POS);
+    chr.result <- as.numeric(chrpos.result[,1]);
+    pos.result <- as.numeric(chrpos.result[,2]);
+    
+    p.value.vec <- 0;known.variant.collapsed.vec <- 0;candidate.variant.tabix.vec <- 0;anno.known.variant.vec <- 0;anno.candidate.variant.vec <- 0;ix.rm <- integer(0);
+    res <- list();
+    for(ii in 1:length(candidate.variant.vec))
+      {
+        
+        pos.start.window <- max(pos.candidate[ii]-window.size,1);
+        pos.end.window <- pos.candidate[ii]+window.size;
+        ix.candidate <- which(singlevar.result$POS==candidate.variant.vec[ii]);
+        ix.var <- which(chr.result==chr.candidate[ii] & pos.result>=pos.start.window & pos.result<=pos.end.window);
+        res[[ii]] <- list();
+        candidate.variant <- candidate.variant.vec[ii];
+        if(length(ix.var)==0) ix.rm <- c(ix.rm,ii)
+        if(length(ix.var)>0){
+          p.value.tmp <- singlevar.result$PVALUE[ix.var];
+          ix.top <- which(p.value.tmp<pval.cutoff);
+          if(length(ix.top)>0)
+            {
+              ix.known <- ix.var[ix.top];
+              chrpos.known <- singlevar.result$POS[ix.known];
+              candidate.in.known <- which(chrpos.known==candidate.variant);
+              pval.known <- singlevar.result$PVALUE[ix.known];
+              anno.known <- singlevar.result$ANNO[ix.known];              
+              if(length(candidate.in.known)>0) {
+                chrpos.known <- chrpos.known[-candidate.in.known];
+                pval.known <- pval.known[-candidate.in.known];
+                anno.known <- anno.known[-candidate.in.known];
+                ix.known <- ix.known[-candidate.in.known];
+              }
+              res[[ii]] <- list(candidate.variant=candidate.variant.vec[ii],
+                                ix.candidate=ix.candidate,
+                                ix.var=ix.var,
+                                ix.known=ix.known);
+            }
+    
+        }
+      }
+    return(res)
+  }
+
+## find.topN.variant <- function(gene.name,window.size,singlevar.result,topN=1,out.digits=4)
+##   {
+##     data(refFlat.resource);
+##     res <- res.refFlat;
+##     gene <- res$gene;
+##     chr <- res$chr;
+##     pos.start <- res$pos.start;
+##     pos.end <- res$pos.end;
+##     ix.gene <- match(gene.name,gene);
+##     chr.gene <- chr[ix.gene];
+##     pos.start.gene <- pos.start[ix.gene];
+##     pos.end.gene <- pos.end[ix.gene];
+##     known.variant.collapsed.vec <- 0;
+##     candidate.variant.tabix.vec <- 0;
+##     anno.known.variant.vec <- 0;
+##     p.value.vec <- 0;
+##     ix.rm <- integer(0);
+##     for(ii in 1:length(ix.gene))
+##       {
+##         pos.start.window <- max(pos.start.gene[ii]-window.size,1);
+##         pos.end.window <- pos.end.gene[ii]+window.size;
+##         ix.var <- which(singlevar.result[,1]==chr.gene[ii] & singlevar.result[,2]>=pos.start.window & singlevar.result[,2]<=pos.end.window);
+##         ########################################################################################print(c(ii,gene.name[ii],length(ix.var),ix.var));
+##         if(length(ix.var)==0) ix.rm <- c(ix.rm,ii)
+##         if(length(ix.var)>0){
+##           p.value.tmp <- singlevar.result[ix.var,3];
+##           topN <- min(topN,length(ix.var));
+##           ix.min <- ix.var[order(which.min(p.value.tmp))[1:topN]];
+##           ######################################################################################print(c(ix.var,ix.min));
+##           known.variant.collapsed.vec[ii] <- paste(singlevar.result[ix.min,1],singlevar.result[ix.min,2],sep=":",collapse=",");
+##           anno.known.variant.vec[ii] <- paste(anno.known.variant.vec[ix.min,4],sep=",",collapse=",");
+##           candidate.variant.tabix.vec[ii] <- paste(chr.gene[ii],paste(pos.start.gene[ii],pos.end.gene[ii],sep="-"),sep=":");
+##           p.value.vec[ii] <- paste(format(singlevar.result[ix.min,3],digits=out.digits),collapse=",");
+##         }
+##       }
+##     if(length(ix.rm)>0) {
+##       known.variant.collapsed.vec <- known.variant.collapsed.vec[-ix.rm];
+##       candidate.variant.tabix.vec <- candidate.variant.tabix.vec[-ix.rm];
+##       anno.known.variant.vec <- anno.known.variant.vec[-ix.rm];
+##       gene.name <- gene.name[-ix.rm];
+##       p.value.vec <- p.value.vec[-ix.rm];
+##     }    
+##     return(list(known.variant.collapsed.vec=known.variant.collapsed.vec,
+##                 gene.name=gene.name,
+##                 anno.known.variant.vec=anno.known.variant.vec,
+##                 candidate.variant.tabix.vec=candidate.variant.tabix.vec,
+##                 p.value.known.variant.vec=p.value.vec));
+    
+##   }
