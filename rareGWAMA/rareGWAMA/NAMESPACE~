@@ -1,0 +1,7 @@
+exportPattern("^[[:alpha:]]+")
+useDynLib('rareMETALS')
+## export("rareMETALS.gene","rareMETALS.single","min.p.gene","fisher.gene","rvmeta.CMH",
+##        "conditional.rareMETALS.gene.basic","conditional.rareMETALS.single",
+##        "conditional.rareMETALS.single.basic","rm.na","rvmeta.sumstat",
+##        'rareMETALS.range',"get.tabix.range","find.top.variant",
+##        "get.gene.inWindow");

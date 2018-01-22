@@ -459,23 +459,4 @@ rareGWAMA.single.multiAllele <- function(score.stat.file,imp.qual.file=NULL,tabi
                 raw.data.all=raw.data.all,
                 raw.imp.qual=raw.imp.qual));
 }
-#' convert chisq statistic to beta for binary trait assuming the variance for y;
-#' @param statistic chisq stat;
-#' @param beta.ori original beta; for getting the sign;
-#' @param var.y the variance for Y. for binary trait, the variance of y is frac.case*(1-frac.case); for continuous trait, the variance for y is typically set to 1; 
-#' @param af allele freq;
-#' @param N sample size;
-#' @export
-convertChisq2Beta <- function(statistic,beta.ori,var.y,af,N,binaryTrait==FALSE) {
 
-    if(binaryTrait==FALSE) {
-        beta.out <- sign(beta.ori)*sqrt(statistic)*sqrt(var.y)/sqrt(2*N*af*(1-af));
-        beta.sd <- sqrt(var.y/(2*N*af*(1-af)));
-    }
-    if(binaryTrait=TRUE) {
-        beta.out <- sign(beta.ori)*sqrt(statistic)/sqrt(2*N*af*(1-af))/sqrt(var.y);
-        beta.sd <- sqrt(1/sqrt(2*N*af*(1-af)*var.y));
-    }
-    return(list(beta.est=beta.out,
-                beta.sd=beta.sd));
-}

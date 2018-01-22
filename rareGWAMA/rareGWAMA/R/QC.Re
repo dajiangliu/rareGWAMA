@@ -478,10 +478,6 @@ imputeConditional <- function(ustat.list,vstat.list,cov.mat.list,N.mat,beta.vec=
     return(list(conditional.ustat=conditional.ustat,
                 conditional.V=conditional.V));
 }
-#' regularize matrix;
-#' @param M matrix
-#' @param lambda regularization parameter
-#' @export
 regMat <- function(M,lambda) {
     cor.tmp <- rm.na(cov2cor(M));
     diag(cor.tmp) <- 1;
