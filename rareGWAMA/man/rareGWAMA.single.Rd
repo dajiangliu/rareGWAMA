@@ -6,7 +6,7 @@
 \usage{
 rareGWAMA.single(score.stat.file, imp.qual.file = NULL, tabix.range,
   alternative = "two.sided", col.impqual = 5, impQual.lb = 0.7,
-  impQualWeight = FALSE, rmMultiAllelicSite = TRUE)
+  impQualWeight = FALSE, rmMultiAllelicSite = FALSE, gc = FALSE, ...)
 }
 \arguments{
 \item{score.stat.file}{the file names of score statistic files;}
@@ -31,4 +31,3 @@ A list of analysis results;
 \description{
 single variant meta-analysis integrating imputation quality;
 }
-

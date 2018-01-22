@@ -22,4 +22,3 @@ the score statistic and their covariance matrix;
 \description{
 This is the function to obtain conditional score statistics;
 }
-

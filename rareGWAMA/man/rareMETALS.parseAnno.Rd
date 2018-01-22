@@ -15,4 +15,3 @@ A string with parsed information;
 \description{
 A function to pass ANNOFULL from SEQMINER;
 }
-

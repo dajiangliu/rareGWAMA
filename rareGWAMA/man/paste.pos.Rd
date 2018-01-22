@@ -17,4 +17,3 @@ chrom:pos;
 \description{
 This function quickly paste chrom and pos;
 }
-

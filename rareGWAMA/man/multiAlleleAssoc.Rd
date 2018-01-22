@@ -19,4 +19,3 @@ a matrix with formatted result;
 \description{
 Perform multi-allelic association tests;
 }
-

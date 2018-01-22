@@ -5,7 +5,7 @@
 \title{format data into matrices;}
 \usage{
 GWAMA.formatData(raw.data.all, raw.imp.qual, impQualWeight, impQual.lb,
-  col.impqual)
+  col.impqual, ...)
 }
 \arguments{
 \item{raw.data.all}{The read in from summary assoicaiton statistic files;}
@@ -20,4 +20,3 @@ a list of converted data for downstream meta-analysis;
 \description{
 format data into matrices;
 }
-

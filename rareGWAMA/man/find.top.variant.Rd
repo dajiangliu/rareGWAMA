@@ -19,4 +19,3 @@ find.top.variant(candidate.variant.vec, window.size, singlevar.result,
 \description{
 Find top variants in a gene region that satisfy a MAF cutoff;
 }
-

@@ -47,8 +47,8 @@ get.conditional.score.stat <- function(ustat,X.T.times.X,N,ix.candidate,ix.known
     N <- as.integer(mean(N,na.rm=T));
     if(length(which(is.na(ustat)))+length(which(is.na(X.T.times.X)))>0)
     {
-        return(list(conditional.ustat=NA,
-                    conditional.V=NA));
+        return(list(conditional.ustat=as.matrix(NA),
+                    conditional.V=as.matrix(NA)));
     }
     X2.T.times.Y <- X.T.times.Y[ix.X2];
     X1.T.times.Y <- X.T.times.Y[ix.X1];
@@ -77,9 +77,9 @@ get.conditional.score.stat <- function(ustat,X.T.times.X,N,ix.candidate,ix.known
         V <- X1.T.times.X1;        
     }
     V <- V*as.numeric(sigma.sq.est);
-    return(list(conditional.ustat=U,
+    return(list(conditional.ustat=as.matrix(U),
                 sigma.sq.est=sigma.sq.est,
-                conditional.V=V));
+                conditional.V=as.matrix(V)));
     
 }
 

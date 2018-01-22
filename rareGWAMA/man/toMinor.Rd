@@ -2,6 +2,7 @@
 % Please edit documentation in R/myUtils.R, R/rareMETALS2.utils.R
 \name{toMinor}
 \alias{toMinor}
+\alias{toMinor}
 \title{To minor: change number >.5 to 1-#}
 \usage{
 toMinor(vecIn)
@@ -18,4 +19,3 @@ To minor: change number >.5 to 1-#
 
 To minor: change number >.5 to 1-#
 }
-

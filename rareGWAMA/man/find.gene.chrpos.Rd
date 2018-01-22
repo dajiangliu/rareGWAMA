@@ -15,4 +15,3 @@ a list consisiting of tabix, pos.start and pos.end;
 \description{
 Find the chromosomal position for genes;
 }
-

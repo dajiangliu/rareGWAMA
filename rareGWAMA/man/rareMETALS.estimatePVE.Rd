@@ -37,4 +37,3 @@ a list consisting of results;
 \description{
 Estimate the variance explained for a list of variants (possibly in LD);
 }
-

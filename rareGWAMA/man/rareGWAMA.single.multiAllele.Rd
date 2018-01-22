@@ -5,13 +5,11 @@
 \title{gateway function for multi-allelic analysis in rareGWAMA}
 \usage{
 rareGWAMA.single.multiAllele(score.stat.file, imp.qual.file = NULL,
-  cor.multiallele.file, tabix.range, alternative = "two.sided",
-  col.impqual = 5, impQual.lb = 0.7, impQualWeight = FALSE)
+  tabix.range, alternative = "two.sided", col.impqual = 5,
+  impQual.lb = 0.7, impQualWeight = FALSE)
 }
 \arguments{
 \item{imp.qual.file}{The imputation quality file names;}
-
-\item{cor.multiallele.file}{The correlation information for multi-allelic sites;}
 
 \item{tabix.range}{The tabix range for the variants to be analyzed;}
 
@@ -24,6 +22,8 @@ rareGWAMA.single.multiAllele(score.stat.file, imp.qual.file = NULL,
 \item{impQualWeight}{Whether to apply the imputation quality based optimal weighting;}
 
 \item{score}{stat.file The score statistics file names;}
+
+\item{cor.multiallele.file}{The correlation information for multi-allelic sites;}
 }
 \value{
 A list of formatted output;
@@ -31,4 +31,3 @@ A list of formatted output;
 \description{
 gateway function for multi-allelic analysis in rareGWAMA
 }
-

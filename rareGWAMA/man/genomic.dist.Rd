@@ -17,4 +17,3 @@ Return variant positions;
 \description{
 Get genomic distance between two variant positions;
 }
-

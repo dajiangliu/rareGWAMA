@@ -40,4 +40,3 @@ a list consisting of results
 \description{
 #' Meta-analysis of gene-level tests by range;
 }
-

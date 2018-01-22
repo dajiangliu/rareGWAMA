@@ -21,4 +21,3 @@ power
 \description{
 power calculation
 }
-

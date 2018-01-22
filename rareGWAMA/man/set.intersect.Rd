@@ -17,4 +17,3 @@ The intersection of set1 and set2;
 \description{
 Intersection of two sets;
 }
-

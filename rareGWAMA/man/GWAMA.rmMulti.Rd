@@ -15,4 +15,3 @@ the data set without multi-allelic sites;
 \description{
 remove multi-allelic sites;
 }
-

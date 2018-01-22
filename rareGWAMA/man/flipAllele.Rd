@@ -28,4 +28,3 @@ A list consist of modified raw.data, ix.include and log.mat.var
 \description{
 This is the function for flipping alleles
 }
-

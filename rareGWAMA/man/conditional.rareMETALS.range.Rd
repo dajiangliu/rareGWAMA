@@ -39,4 +39,3 @@ conditional.rareMETALS.range(range.name = NULL, score.stat.file, cov.file,
 \description{
 Perform conditional analysis for gene-level tests
 }
-

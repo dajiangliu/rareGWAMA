@@ -15,4 +15,3 @@ colCentered matrix;
 \description{
 This function implements function to colCenter a matrix so that colSums(matIn.centered) is 0;
 }
-

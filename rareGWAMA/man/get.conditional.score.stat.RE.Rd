@@ -21,4 +21,3 @@ the score statistic and their covariance matrix;
 \description{
 This is the function to obtain conditional score statistics when conditional on the genes that are detected by SKAT test;
 }
-

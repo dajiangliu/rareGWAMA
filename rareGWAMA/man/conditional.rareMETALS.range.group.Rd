@@ -44,4 +44,3 @@ conditional.rareMETALS.range.group(range.name = NULL, score.stat.file,
 \description{
 Perform conditional analysis for gene-level tests and correcting for allele flips with
 }
-

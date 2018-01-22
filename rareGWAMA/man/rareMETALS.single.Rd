@@ -29,4 +29,3 @@ a list consisting of results
 \description{
 Single variant meta-analysis
 }
-

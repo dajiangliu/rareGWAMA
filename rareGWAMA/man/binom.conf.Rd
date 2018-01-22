@@ -19,4 +19,3 @@ conf.upper and conf.lower
 \description{
 get binomial confidence intervals via normal approx
 }
-

@@ -15,4 +15,3 @@ Return the sum of the elements in a;
 \description{
 Safe colSums
 }
-

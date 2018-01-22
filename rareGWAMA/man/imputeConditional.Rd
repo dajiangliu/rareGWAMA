@@ -19,4 +19,3 @@ imputeConditional(ustat.list, vstat.list, cov.mat.list, N.mat,
 \description{
 Impute missing summary association statistics assuming
 }
-

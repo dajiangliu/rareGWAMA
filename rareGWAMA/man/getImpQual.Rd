@@ -19,4 +19,3 @@ a matrix with imputaton qualities
 \description{
 get imputation quality from tables based upon imputation quality files;
 }
-

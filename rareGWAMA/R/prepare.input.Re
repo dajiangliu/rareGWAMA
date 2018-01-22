@@ -105,4 +105,3 @@ rm.na <- function(x)
   }
 
 
-##popgen.stat <- function();

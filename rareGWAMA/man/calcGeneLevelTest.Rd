@@ -13,4 +13,3 @@ maf.vec the vector of minor allele frequencies
 N sample size;
 test The rvtests. Choices are GRANVIL, SKAT or VT;
 }
-

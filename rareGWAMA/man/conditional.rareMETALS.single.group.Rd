@@ -41,4 +41,3 @@ return a list of meta-analysis results
 \description{
 Perform conditional analysis for single variant tests
 }
-

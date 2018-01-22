@@ -17,4 +17,3 @@ A vector of genes;
 \description{
 Find nearby genes for a sigificant SNP
 }
-

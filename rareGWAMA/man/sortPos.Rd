@@ -15,4 +15,3 @@ Return sorted genomic positions;
 \description{
 Sort genomic positions;
 }
-

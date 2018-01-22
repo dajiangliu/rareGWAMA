@@ -11,4 +11,3 @@ rvmeta.CMH(score.stat.vec.list, maf.vec.list, cov.mat.list, var.Y.list, N.mat,
 \description{
 Function that implement gene-level tests
 }
-

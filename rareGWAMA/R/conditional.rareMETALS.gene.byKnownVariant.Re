@@ -33,10 +33,3 @@ conditional.rareMETALS.gene.byKnownVariant <- function(ANNO,score.stat.file,cov.
     return(res);    
   }
 
-## r2cov.mat <- function(r2.mat,maf.vec)
-##   {
-##     var.vec <- sqrt(maf.vec*(1-maf.vec)*2);
-##     var.mat <- (var.vec%*%t(var.vec));
-##     cov.mat <- r2.mat*var.mat;
-##     return(cov.mat);
-##   }

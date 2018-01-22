@@ -19,4 +19,3 @@ imputeMeta(ustat.list, vstat.list, cov.mat.list, N.mat, beta.vec = NULL,
 \description{
 Impute missing summary association statistics assuming
 }
-

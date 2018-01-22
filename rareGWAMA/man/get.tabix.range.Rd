@@ -15,4 +15,3 @@ A vector of tabix ranges;
 \description{
 change position to tabix range;
 }
-

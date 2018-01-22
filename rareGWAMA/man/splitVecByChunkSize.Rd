@@ -17,4 +17,3 @@ A list with splitted chunks;
 \description{
 This function implement how to split a vector into chunks of certain size
 }
-

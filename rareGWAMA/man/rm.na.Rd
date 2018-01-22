@@ -12,4 +12,3 @@ rm.na(x)
 \description{
 Remove nas
 }
-

@@ -1,4 +1,3 @@
-##library('RVMETA');
 pvt.core <- function(x,mu,sigma,alternative=c('two.sided','greater'))
   {
     sum.all <- 0;
