@@ -1,7 +1,10 @@
 # A rareGWAMA R package
+
 ## Introduction
 
-rareGWAMA is a flexible software package for imputation based GWAS meta-analysis. Right now it is available as a beta version.
+rareGWAMA is a flexible software package for imputation based GWAS meta-analysis. 
+Right now it is available as a beta version.
+
 
 ## Installing the rareGWAMA R package
 
@@ -9,12 +12,13 @@ The package is hosted on github, and this allows installation and update to be v
 
     install.packages("devtools")
 
-Then to install:
+Then you could use:
 
     library(devtools)
     install_github("dajiangliu/rareGWAMA", subdir ="rareGWAMA")
     
-With library(rareGWAMA), your are ready to go!
+With `library(rareGWAMA)`, your are ready to go!
+
 
 
 ## Feedback/Contact
