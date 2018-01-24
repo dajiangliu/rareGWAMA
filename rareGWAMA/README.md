@@ -8,7 +8,7 @@ Right now it is available as a beta version.
 
 ## Installing the rareGWAMA R package
 
-The package is hosted on github, and this allows installation and update to be very easy. First make sure you have the `mvtnorm` and `data.table` packages installed:
+The package is hosted on github, which allows installation and update to be very easy. First, make sure you have the `mvtnorm` and `data.table` packages installed:
 
     install.packages("devtools")
 
