@@ -44,7 +44,7 @@ With `library(rareGWAMA)`, your are ready to go!
 please find more detail in the [input and arguments part](#Input-files-and-arguments) for the arguments:
 * study: The file names of score statistic files, which could be a **vector object**;
 * imp.qual: The file names of imputation quality, which could be a **vector object**;
-* "1:11000-58000": The tabix range, which must be in quote and provided as a string like this;
+* "1:11000-58000": The **tabix range**, which must be in quote and provided as a string like this;
 * alternative: The alternative hypothesis. Default is two.sided;
 * col.impqual: The column number for the imputation quality score;
 * impQual.lb: The lower bound for the imputation quality. Variants with imputaiton quality less than impQual.lb will be labelled as missing;
