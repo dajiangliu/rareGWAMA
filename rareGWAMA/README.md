@@ -38,6 +38,7 @@ With `library(rareGWAMA)`, your are ready to go!
 ## Quick tutorial <a name="quick-tutorial"></a>
 
 ### Single variant tests <a name="conditional-single-variant-tests"></a>
+`rareGWAMA.single(study, study.imp, "1:11000-58000", alternative="two.sided", col.impqual=5, impQual.lb=0, impQualWeight=FALSE, weight="Npq+impQ",gc=FALSE, rmMultiAllelicSite=TRUE);`
 
 ### Conditional single variant tests <a name="single-variant-tests"></a>
 
