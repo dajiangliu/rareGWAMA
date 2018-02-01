@@ -39,7 +39,7 @@ With `library(rareGWAMA)`, your are ready to go!
 
 ### Single variant tests <a name="conditional-single-variant-tests"></a>
 1.The very basic test is using:  
-`res <- rareGWAMA.single(study, imp.qul, "1:11000-58000", alternative="two.sided", col.impqual=5, impQual.lb=0, impQualWeight=FALSE, weight="Npq+impQ",gc=FALSE, rmMultiAllelicSite=TRUE);`
+`res <- rareGWAMA.single(study, imp.qul, "1:11000-58000", alternative="two.sided", col.impqual=5, impQual.lb=0, impQualWeight=FALSE, weight="Npq+impQ",gc=FALSE, rmMultiAllelicSite=TRUE);`   
 please find more detail in the [input and arguments part](#Input-files-and-arguments) for the arguments:
 * study: The file names of score statistic files, which could be a vector object;
 * imp.qul: The file names of imputation quality, which could be a vector object;
@@ -49,7 +49,17 @@ please find more detail in the [input and arguments part](#Input-files-and-argum
 * impQual.lb: The lower bound for the imputation quality. Variants with imputaiton quality less than impQual.lb will be labelled as missing;
 * impQualWeight: Using imputation quality as weight;
 * rmMultiAllelicSite: Default is TRUE. Multi-allelic sites will be removed from the analyses if set TRUE, and a variable posMulti will be output; The variant site with multiple alleles can be analyzed using rareGWAMA.single.multiAllele function;
-
+2.The out put should be as follows:  
+`head(res)`
+```
+     POS           REF ALT  AF         STAT       PVALUE     BETA        SD         N        DIRECTION                          EFFECTIVE_N
+[1,] "9:100000040" "G" "A"  "2.28e-05" "1.01e+00" "3.16e-01" " 7.29e-01" " 0.72624" "41634"  "XXXXXXXXXXXXXXXXXXXXXXXXXXXX++XX" "7925"
+[2,] "9:100000056" "T" "TA" "7.07e-01" "1.62e+00" "2.04e-01" "-9.09e-03" " 0.00715" "47219"  "XXXXXXXXXXXXXXXX-XXXXXXXXXXX--XX" "46951"
+[3,] "9:100000102" "G" "C"  "6.91e-04" "8.00e-01" "3.71e-01" "-7.78e-02" " 0.08691" "95869"  "+++---+-------++XX-++--X++----XX" "36378"
+[4,] "9:100000172" "C" "T"  "2.26e-05" "2.25e-01" "6.35e-01" "-1.99e-01" " 0.41982" "125656" "XXXXXXXXXXXXXXXX-XXXXXXXXXXX--X+" "20434"
+[5,] "9:100000177" "C" "G"  "2.16e-04" "8.38e-01" "3.60e-01" "-1.04e-01" " 0.11335" "179891" "-+---X+XX-+--+-+-X-+-+-X++-+--X+" "89179"
+[6,] "9:100000187" "A" "T"  "1.13e-04" "6.78e-01" "4.10e-01" "-2.35e-01" " 0.28514" "54235"  "+-++-XX+--++--+-XX+++++X----XXXX" "21285"
+```
 
 ### Conditional single variant tests <a name="single-variant-tests"></a>
 
