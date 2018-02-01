@@ -68,7 +68,7 @@ please find more detail in the [input and arguments part](#Input-files-and-argum
 
 ## Input files and arguments <a name="input-files"></a> 
 
-Both score statistics file and imputation quality file should be tabixed.
+All the score statistics files and imputation quality files should be tabixed.
 
 ### Score statistics files:  
 if you use [RVTEST](https://github.com/zhanxw/rvtests), the output is ready to go:
@@ -80,7 +80,7 @@ CHROM   POS     REF     ALT     N_INFORMATIVE   AF      INFORMATIVE_ALT_AC      
 1       10539   C       A       2352    0       0       1       1       2352    0       0       -0.00020902     0.0626305       -0.0532862      0.997337
 ```
 
-###Imputation quality files:
+### Imputation quality files:
 
 ```
 CHROM   POS     REF     ALT     Rsq
