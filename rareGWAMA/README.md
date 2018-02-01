@@ -51,7 +51,7 @@ please find more detail in the [input and arguments part](##Input-files-and-argu
 * rmMultiAllelicSite: Default is TRUE. Multi-allelic sites will be removed from the analyses if set TRUE, and a variable posMulti will be output; The variant site with multiple alleles can be analyzed using rareGWAMA.single.multiAllele function;  
 
 2.The out put should be as follows:  
-`head(res)`
+`head(res$res.formatted))`
 ```
      POS           REF ALT  AF         STAT       PVALUE     BETA        SD         N        DIRECTION                          EFFECTIVE_N
 [1,] "9:100000040" "G" "A"  "2.28e-05" "1.01e+00" "3.16e-01" " 7.29e-01" " 0.72624" "41634"  "XXXXXXXXXXXXXXXXXXXXXXXXXXXX++XX" "7925"
