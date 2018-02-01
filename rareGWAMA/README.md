@@ -41,14 +41,15 @@ With `library(rareGWAMA)`, your are ready to go!
 1.The very basic test is using:  
 `res <- rareGWAMA.single(study, imp.qul, "1:11000-58000", alternative="two.sided", col.impqual=5, impQual.lb=0, impQualWeight=FALSE, weight="Npq+impQ",gc=FALSE, rmMultiAllelicSite=TRUE);`   
 please find more detail in the [input and arguments part](#Input-files-and-arguments) for the arguments:
-* study: The file names of score statistic files, which could be a vector object;
-* imp.qul: The file names of imputation quality, which could be a vector object;
+* study: The file names of score statistic files, which could be a **vector object**;
+* imp.qul: The file names of imputation quality, which could be a **vector object**;
 * "1:11000-58000": The tabix range, which must be in quote and provided as a string like this;
 * alternative: The alternative hypothesis. Default is two.sided;
 * col.impqual: The column number for the imputation quality score;
 * impQual.lb: The lower bound for the imputation quality. Variants with imputaiton quality less than impQual.lb will be labelled as missing;
 * impQualWeight: Using imputation quality as weight;
-* rmMultiAllelicSite: Default is TRUE. Multi-allelic sites will be removed from the analyses if set TRUE, and a variable posMulti will be output; The variant site with multiple alleles can be analyzed using rareGWAMA.single.multiAllele function;
+* rmMultiAllelicSite: Default is TRUE. Multi-allelic sites will be removed from the analyses if set TRUE, and a variable posMulti will be output; The variant site with multiple alleles can be analyzed using rareGWAMA.single.multiAllele function;  
+
 2.The out put should be as follows:  
 `head(res)`
 ```
@@ -65,7 +66,14 @@ please find more detail in the [input and arguments part](#Input-files-and-argum
 
 
 ## Input files and arguments <a name="input-files"></a>
-
+###Score statistics files:
+```
+CHROM   POS     REF     ALT     N_INFORMATIVE   AF      INFORMATIVE_ALT_AC      CALL_RATE       HWE_PVALUE      N_REF   N_HET   N_ALT   U_STAT  SQRT_V_STAT     ALT_EFFSIZE     PVALUE
+1       10177   A       AC      2352    0.5     2352    1       0       0       2352    0       1.67496 2.51553 0.264695        0.505508
+1       10235   T       TA      2352    0       0       1       1       2352    0       0       -0.108472       0.207841        -2.51104        0.601742
+1       10352   T       TA      2352    0.5     2352    1       0       0       2352    0       0.665562        2.61389 0.0974122       0.799013
+1       10539   C       A       2352    0       0       1       1       2352    0       0       -0.00020902     0.0626305       -0.0532862      0.997337
+```
 
 ## Feedback/Contact <a name="Feedback/Contact"></a>
 
