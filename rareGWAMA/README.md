@@ -1,5 +1,20 @@
 # A rareGWAMA R package
 
+**Table of Contents**
+
+- [Introduction](##introduction)
+- [Installation](##Installing the rareGWAMA R package)
+- [Quick tutorial](##quick-tutorial)
+    - [Single variant tests](##single-variant-tests)
+    - [Conditional single variant tests](##Conditional-single-variant-tests)
+- [Input files and arguments](##input-files)
+    - [Score statistic files files (Summary statistics)](##Score-statistics-files)
+    - [Imputation quality files](##Imputation-quality-files)
+    - [Tabix range](##Tabix-range)
+    - [Alternative](##Alternative)
+- [Feedback/Contact](## Feedback/Contact)
+
+
 ## Introduction
 
 rareGWAMA is a flexible software package for imputation based GWAS meta-analysis. 
