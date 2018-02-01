@@ -38,7 +38,18 @@ With `library(rareGWAMA)`, your are ready to go!
 ## Quick tutorial <a name="quick-tutorial"></a>
 
 ### Single variant tests <a name="conditional-single-variant-tests"></a>
-`rareGWAMA.single(study, study.imp, "1:11000-58000", alternative="two.sided", col.impqual=5, impQual.lb=0, impQualWeight=FALSE, weight="Npq+impQ",gc=FALSE, rmMultiAllelicSite=TRUE);`
+1.The very basic test is using:
+`res <- rareGWAMA.single(study, imp.qul, "1:11000-58000", alternative="two.sided", col.impqual=5, impQual.lb=0, impQualWeight=FALSE, weight="Npq+impQ",gc=FALSE, rmMultiAllelicSite=TRUE);`
+please find more detail in the [input and arguments part]() for the arguments:
+* study: The file names of score statistic files, which could be a vector object;
+* imp.qul: The file names of imputation quality, which could be a vector object;
+* "1:11000-58000": The tabix range, which must be in quote and provided as a string like this;
+* alternative: The alternative hypothesis. Default is two.sided;
+* col.impqual: The column number for the imputation quality score;
+* impQual.lb: The lower bound for the imputation quality. Variants with imputaiton quality less than impQual.lb will be labelled as missing;
+* impQualWeight: Using imputation quality as weight;
+* rmMultiAllelicSite: Default is TRUE. Multi-allelic sites will be removed from the analyses if set TRUE, and a variable posMulti will be output; The variant site with multiple alleles can be analyzed using rareGWAMA.single.multiAllele function;
+
 
 ### Conditional single variant tests <a name="single-variant-tests"></a>
 
