@@ -68,7 +68,7 @@ please find more details in the [input and arguments part](#input-files) for the
 ### Conditional single variant tests <a name="conditional-single-variant-tests"></a>
 1.The command should like:  
 
-`res <- rareGWAMA.cond.single(study, imp.qual, vcf.ref.file="{$your_path}/ALL.chr9.phase3_shapeit2_mvncall_integrated_v5.20130502.genotypes.vcf.gz", candidateVar="9:97018619", knownVar="9:100000172", alternative="two.sided",col.impqual=5,impQual.lb=0,impQualWeight=FALSE, weight="Npq+impQ",gc=FALSE, rmMultiAllelicSite=TRUE);`      
+`res <- rareGWAMA.cond.single(study, imp.qual, vcf.ref.file="{$your_path}/ALL.chr9.phase3.genotypes.vcf.gz", candidateVar="9:97018619", knownVar="9:100000172", alternative="two.sided", col.impqual=5, impQual.lb=0, impQualWeight=FALSE, weight="Npq+impQ", gc=FALSE, rmMultiAllelicSite=TRUE);`      
   
 please find more details in the [input and arguments part](#input-files) for the arguments:
 > * study: The file names of score statistic files, which could be a **vector object**;
@@ -99,6 +99,7 @@ Say if you have such files: `study1.gz(score statistics files), study2.gz, study
 
 to tabix each file.
 
+
 ### Score statistics files:  
 if you use <sup>[1](#myfootnote1)</sup> [RVTESTS](https://github.com/zhanxw/rvtests), the output is ready to go:
 ```
@@ -127,7 +128,7 @@ CHROM   POS     REF     ALT     Rsq
 The file names of the reference panel file.  
 You could be download the files from [1000 Genomes Project](ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/).   
 Also, you could subset the ranges you want by using **tabix**, with command like:   
-`tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20100804/ALL.2of4intersection.20100804.genotypes.vcf.gz 2:39967768-39967768`   
+```tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20100804/ALL.2of4intersection.20100804.genotypes.vcf.gz 2:39967768-39967768```   
 , for more detal, please see: [How do I get a sub-section of a VCF file?](http://www.internationalgenome.org/faq/how-do-i-get-sub-section-vcf-file/);
 
 
