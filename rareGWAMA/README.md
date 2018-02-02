@@ -70,7 +70,7 @@ please find more details in the [input and arguments part](#input-files) for the
 
 ## Input files and arguments <a name="input-files"></a> 
 
-_All the score statistics files and imputation quality files should be tabixed._
+==All the score statistics files and imputation quality files should be tabixed==  
 Say if you have such files: `study1.gz(score statistics files), study2.gz, study1.R2.gz(imputation quality files), study2.R2.gz`in your folder, and already added **tabix** to your `$PATH` environment variable, you could use:   
 
 ```for file in study*;do g=`zcat $file | head -200 | grep -n CHROM | cut -f1 -d":"`; tabix -f -S $g -s 1 -b 2 -e 2 $file; done```
