@@ -43,7 +43,7 @@ With `library(rareGWAMA)`, your are ready to go!
 
 `res <- rareGWAMA.single(study, imp.qual, "1:11000-58000", alternative="two.sided", col.impqual=5, impQual.lb=0, impQualWeight=FALSE, weight="Npq+impQ",gc=FALSE, rmMultiAllelicSite=TRUE);`   
 
-please find more detail in the [input and arguments part](#Input-files-and-arguments) for the arguments:
+please find more details in the [input and arguments part](#input-files) for the arguments:
 * study: The file names of score statistic files, which could be a **vector object**;
 * imp.qual: The file names of imputation quality, which could be a **vector object**;
 * "1:11000-58000": The **tabix range**, which must be in quote and provided as a string like this;
