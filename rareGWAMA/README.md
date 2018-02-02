@@ -37,7 +37,7 @@ With `library(rareGWAMA)`, your are ready to go!
 
 ## Quick tutorial <a name="quick-tutorial"></a>
 
-### Single variant tests <a name="conditional-single-variant-tests"></a>
+### Single variant tests <a name="Single-variant-tests"></a>
 
 1.The very basic test is using:  
 
@@ -65,7 +65,7 @@ please find more detail in the [input and arguments part](#Input-files-and-argum
 [6,] "9:100000187" "A" "T"  "1.13e-04" "6.78e-01" "4.10e-01" "-2.35e-01" " 0.28514" "54235"  "+-++-XX+--++--+-XX+++++X----XXXX" "21285"
 ```
 
-### Conditional single variant tests <a name="single-variant-tests"></a>
+### Conditional single variant tests <a name="conditional-single-variant-tests"></a>
 
 
 ## Input files and arguments <a name="input-files"></a> 
