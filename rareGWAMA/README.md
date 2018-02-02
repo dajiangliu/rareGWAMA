@@ -5,7 +5,7 @@
 - [Introduction](#introduction)
 - [Installation](#Installing-the-rareGWAMA-R-package)
 - [Quick tutorial](#quick-tutorial)
-    - [Single variant tests](#single-variant-tests)
+    - [Single variant tests](#Single-variant-tests)
     - [Conditional single variant tests](#conditional-single-variant-tests)
 - [Input files and arguments](#input-files)
     - [Score statistic files files (Summary statistics)](#Score-statistics-files)
@@ -40,7 +40,9 @@ With `library(rareGWAMA)`, your are ready to go!
 ### Single variant tests <a name="conditional-single-variant-tests"></a>
 
 1.The very basic test is using:  
+
 `res <- rareGWAMA.single(study, imp.qual, "1:11000-58000", alternative="two.sided", col.impqual=5, impQual.lb=0, impQualWeight=FALSE, weight="Npq+impQ",gc=FALSE, rmMultiAllelicSite=TRUE);`   
+
 please find more detail in the [input and arguments part](#Input-files-and-arguments) for the arguments:
 * study: The file names of score statistic files, which could be a **vector object**;
 * imp.qual: The file names of imputation quality, which could be a **vector object**;
