@@ -44,14 +44,14 @@ With `library(rareGWAMA)`, your are ready to go!
 `res <- rareGWAMA.single(study, imp.qual, "1:11000-58000", alternative="two.sided", col.impqual=5, impQual.lb=0, impQualWeight=FALSE, weight="Npq+impQ",gc=FALSE, rmMultiAllelicSite=TRUE);`   
 
 please find more details in the [input and arguments part](#input-files) for the arguments:
-* study: The file names of score statistic files, which could be a **vector object**;
-* imp.qual: The file names of imputation quality, which could be a **vector object**;
-* "1:11000-58000": The **tabix range**, which must be in quote and provided as a string like this;
-* alternative: The alternative hypothesis. Default is two.sided;
-* col.impqual: The column number for the imputation quality score;
-* impQual.lb: The lower bound for the imputation quality. Variants with imputaiton quality less than impQual.lb will be labelled as missing;
-* impQualWeight: Using imputation quality as weight;
-* rmMultiAllelicSite: Default is TRUE. Multi-allelic sites will be removed from the analyses if set TRUE, and a variable posMulti will be output; The variant site with multiple alleles can be analyzed using rareGWAMA.single.multiAllele function;  
+>* study: The file names of score statistic files, which could be a **vector object**;
+>* imp.qual: The file names of imputation quality, which could be a **vector object**;
+>* "1:11000-58000": The **tabix range**, which must be in quote and provided as a string like this;
+>* alternative: The alternative hypothesis. Default is two.sided;
+>* col.impqual: The column number for the imputation quality score;
+>* impQual.lb: The lower bound for the imputation quality. Variants with imputaiton quality less than impQual.lb will be labelled as missing;
+>* impQualWeight: Using imputation quality as weight;
+>* rmMultiAllelicSite: Default is TRUE. Multi-allelic sites will be removed from the analyses if set TRUE, and a variable posMulti will be output; The variant site with multiple alleles can be analyzed using rareGWAMA.single.multiAllele function;  
 
 2.The out put should be as follows:  
 `head(res$res.formatted))`
@@ -70,7 +70,7 @@ please find more details in the [input and arguments part](#input-files) for the
 
 ## Input files and arguments <a name="input-files"></a> 
 
-All the score statistics files and imputation quality files should be tabixed.  
+==All the score statistics files and imputation quality files should be tabixed.==  
 Say if you have such files: `study1.gz(score statistics files), study2.gz, study1.R2.gz(imputation quality files), study2.R2.gz`in your folder, and already added **tabix** to your `$PATH` environment variable, you could use:   
 
 ```for file in study*;do g=`zcat $file | head -200 | grep -n CHROM | cut -f1 -d":"`; tabix -f -S $g -s 1 -b 2 -e 2 $file; done```
