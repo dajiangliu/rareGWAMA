@@ -66,7 +66,7 @@ please find more details in the [input and arguments part](#input-files) for the
 ```
 
 ### Conditional single variant tests <a name="conditional-single-variant-tests"></a>
-1.The command should like:  
+1.The command should be like:  
 
 `res <- rareGWAMA.cond.single(study, imp.qual, vcf.ref.file="{$your_path}/ALL.chr9.phase3.genotypes.vcf.gz", candidateVar="9:97018619", knownVar="9:100000172", alternative="two.sided", col.impqual=5, impQual.lb=0, impQualWeight=FALSE, weight="Npq+impQ", gc=FALSE, rmMultiAllelicSite=TRUE);`      
   
@@ -74,8 +74,8 @@ please find more details in the [input and arguments part](#input-files) for the
 > * study: The file names of score statistic files, which could be a **vector object**;
 > * imp.qual: The file names of imputation quality, which could be a **vector object**;
 > * vcf.ref.file: the file names of the reference panel file, e.g. could be downloaded from [1000 Genomes Project](ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/). 
-> * candidateVar: the tabix range;
-> * knownVar: known variant;
+> * candidateVar: The tabix range;
+> * knownVar: The known variant;
 > * alternative: The alternative hypothesis. Default is two.sided;
 > * col.impqual: The column number for the imputation quality score;
 > * impQual.lb: The lower bound for the imputation quality. Variants with imputaiton quality less than impQual.lb will be labelled as missing;
