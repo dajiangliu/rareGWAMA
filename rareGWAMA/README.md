@@ -78,7 +78,7 @@ Say if you have such files: `study1.gz(score statistics files), study2.gz, study
 to tabix each file.
 
 ### Score statistics files:  
-if you use [RVTEST: Dajiang Liu (2014) Nature Genetics](https://github.com/zhanxw/rvtests), the output is ready to go:
+if you use [RVTESTS: Bioinformatics 2016 32: 1423-1426.](https://github.com/zhanxw/rvtests), the output is ready to go:
 ```
 CHROM   POS     REF     ALT     N_INFORMATIVE   AF      INFORMATIVE_ALT_AC      CALL_RATE       HWE_PVALUE      N_REF   N_HET   N_ALT   U_STAT  SQRT_V_STAT     ALT_EFFSIZE     PVALUE
 1       10177   A       AC      2352    0.5     2352    1       0       0       2352    0       1.67496 2.51553 0.264695        0.505508
