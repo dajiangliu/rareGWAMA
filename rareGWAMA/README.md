@@ -10,7 +10,7 @@
 - [Input files and arguments](#input-files)
     - [Score statistic files files (Summary statistics)](#Score-statistics-files)
     - [Imputation quality files](#Imputation-quality-files)
-    - [Vcf reference files](#vcf-reference-files)
+    - [VCF reference files](#vcf-reference-files)
     - [Alternative](#Alternative)
 - [Feedback/Contact](#Feedback/Contact)
 
@@ -123,11 +123,11 @@ CHROM   POS     REF     ALT     Rsq
 1       11012   C       G       0.01252
 ```
 
-### Vcf.ref.files: <a name="vcf-reference-files"></a>
+### VCF reference files: <a name="vcf-reference-files"></a>
 The file names of the reference panel file.  
 You could be download the files from [1000 Genomes Project](ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/).   
-Also, you could subset the raigen you want using **tabix**, with command like: 
-`tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20100804/ALL.2of4intersection.20100804.genotypes.vcf.gz 2:39967768-39967768`
+Also, you could subset the ranges you want by using **tabix**, with command like:   
+`tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20100804/ALL.2of4intersection.20100804.genotypes.vcf.gz 2:39967768-39967768`   
 , for more detal, please see: [How do I get a sub-section of a VCF file?](http://www.internationalgenome.org/faq/how-do-i-get-sub-section-vcf-file/);
 
 
