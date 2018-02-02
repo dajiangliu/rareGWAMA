@@ -66,6 +66,28 @@ please find more details in the [input and arguments part](#input-files) for the
 ```
 
 ### Conditional single variant tests <a name="conditional-single-variant-tests"></a>
+1.The command should like:  
+
+`res <- rareGWAMA.cond.single(study, imp.qual, vcf.ref.file="{$your_path}/ALL.chr9.phase3_shapeit2_mvncall_integr
+    ated_v5.20130502.genotypes.vcf.gz", candidateVar="9:97018619", knownVar="9:100000172", alternative="two.sided",col.impqual=5,impQual.lb=0,impQualWeight=FALSE, weight="Npq+impQ",gc=FALSE, rmMultiAllelicSite=TRUE);`   
+please find more details in the [input and arguments part](#input-files) for the arguments:
+> * study: The file names of score statistic files, which could be a **vector object**;
+> * imp.qual: The file names of imputation quality, which could be a **vector object**;
+> * vcf.ref.file: the file names of the reference panel file(e.g. could be downloaed from [1000 Genomes Project](ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/));
+> * candidateVar: the tabix range;
+> * knownVar: known variant;
+> * alternative: The alternative hypothesis. Default is two.sided;
+> * col.impqual: The column number for the imputation quality score;
+> * impQual.lb: The lower bound for the imputation quality. Variants with imputaiton quality less than impQual.lb will be labelled as missing;
+> * impQualWeight: Using imputation quality as weight;
+> * rmMultiAllelicSite: Default is TRUE. Multi-allelic sites will be removed from the analyses if set TRUE, and a variable posMulti will be output; The variant site with multiple alleles can be analyzed using rareGWAMA.single.multiAllele function;  
+
+2.The out put should be as follows:  
+`head(res$res.formatted))` 
+```
+    POS          REF ALT AF         STAT    PVALUE BETA    SD      N       numStability
+[1,] "9:97018619" "T" "C" "8.82e-05" "0.093" "0.76" "0.131" "0.428" "54235" "0"
+```
 
 
 ## Input files and arguments <a name="input-files"></a> 
