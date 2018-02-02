@@ -126,7 +126,7 @@ CHROM   POS     REF     ALT     Rsq
 
 ### VCF reference files: <a name="vcf-reference-files"></a>
 The file names of the reference panel file.  
-You could be download the files from [1000 Genomes Project](ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502).   
+You could be download the files from **1000 Genomes Project**: <ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502>.   
 Also, you could subset the ranges you want by using **tabix**, with command like:   
 
 `tabix -h ALL.2of4intersection.20100804.genotypes.vcf.gz 2:39967768-39967768`   
