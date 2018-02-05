@@ -28,6 +28,13 @@ uniq.allele <- function(x) {x.tab <- table(x);return(paste(names(x.tab),sep=',',
 #' @param impQualWeight Using imputation quality as weight
 #' @param rmMultiAllelicSite Default is TRUE. Multi-allelic sites will be removed from the analyses if set TRUE, and a variable posMulti will be output; The variant site with multiple alleles can be analyzed using rareGWAMA.single.multiAllele function; 
 #' @return A list of analysis results;
+#' @examples 
+#' study.vec <- c("rareGWAMA/inst/extdata/study1.gz", "rareGWAMA/inst/extdata/study1.R2.gz", "rareGWAMA/inst/extdata/study3.gz");
+#' r2.vec <- c("rareGWAMA/inst/extdata/study1.R2.gz", "rareGWAMA/inst/extdata/study2.R2.gz", "rareGWAMA/inst/extdata/study3.R2.gz");
+#' res <- rareGWAMA.single(score.stat.file = study.vec, imp.qual.file = r2.vec ,"1:10177-57200", alternative="two.sided", 
+#'                         col.impqual=5, impQual.lb=0, impQualWeight=FALSE, weight="Npq+impQ", 
+#'                         gc=FALSE, rmMultiAllelicSite=TRUE);
+#' head(res$res.formatted);
 #' @export 
 rareGWAMA.single <- function(score.stat.file,imp.qual.file=NULL,tabix.range,alternative="two.sided",col.impqual=5,impQual.lb=0.7,impQualWeight=FALSE,rmMultiAllelicSite=FALSE,gc=FALSE,...) {
     a <- Sys.time();
