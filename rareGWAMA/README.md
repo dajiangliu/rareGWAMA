@@ -64,6 +64,7 @@ please find more details in the [input and arguments part](#input-files) for the
 [5,] "9:100000177" "C" "G"  "2.16e-04" "8.38e-01" "3.60e-01" "-1.04e-01" " 0.11335" "179891" "-+---X+XX-+--+-+-X-+-+-X++-+--X+" "89179"
 [6,] "9:100000187" "A" "T"  "1.13e-04" "6.78e-01" "4.10e-01" "-2.35e-01" " 0.28514" "54235"  "+-++-XX+--++--+-XX+++++X----XXXX" "21285"
 ```
+3. For demo data, please see `?rareGWAMA.single`.
 
 ### Conditional single variant tests <a name="conditional-single-variant-tests"></a>
 1.The command should be like:  
@@ -88,7 +89,7 @@ please find more details in the [input and arguments part](#input-files) for the
     POS          REF ALT AF         STAT    PVALUE BETA    SD      N       numStability
 [1,] "9:97018619" "T" "C" "8.82e-05" "0.093" "0.76" "0.131" "0.428" "54235" "0"
 ```
-
+3. For demo data, please see `?rareGWAMA.cond.single`.
 
 ## Input files and arguments <a name="input-files"></a> 
 
