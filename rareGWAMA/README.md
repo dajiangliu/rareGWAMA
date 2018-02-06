@@ -41,12 +41,13 @@ With `library(rareGWAMA)`, your are ready to go!
 
 1.The very basic test is using:  
 
-`res <- rareGWAMA.single(study, imp.qual, "1:11000-58000", alternative="two.sided", col.impqual=5, impQual.lb=0, impQualWeight=FALSE, weight="Npq+impQ",gc=FALSE, rmMultiAllelicSite=TRUE);`   
+`res <- rareGWAMA.single(score.stat.file=study, imp.qual.file	
+=imp.qual, tabix.range="1:11000-58000", alternative="two.sided", col.impqual=5, impQual.lb=0, impQualWeight=FALSE, weight="Npq+impQ",gc=FALSE, rmMultiAllelicSite=TRUE);`   
 
 please find more details in the [input and arguments part](#input-files) for the arguments:
-> * study: The file names of score statistic files, which could be a **vector object**;
-> * imp.qual: The file names of imputation quality, which could be a **vector object**;
-> * "1:11000-58000": The **tabix range**, which must be in quote and provided as a string like this;
+> * score.stat.file: The file names of score statistic files, which could be a **vector object**;
+> * imp.qual.file: The file names of imputation quality, which could be a **vector object**;
+> * tabix.range: The **tabix range**, which must be in quote and provided as a string like this: "1:11000-58000";
 > * alternative: The alternative hypothesis. Default is two.sided;
 > * col.impqual: The column number for the imputation quality score;
 > * impQual.lb: The lower bound for the imputation quality. Variants with imputaiton quality less than impQual.lb will be labelled as missing;
@@ -69,11 +70,11 @@ please find more details in the [input and arguments part](#input-files) for the
 ### Conditional single variant tests <a name="conditional-single-variant-tests"></a>
 1.The command should be like:  
 
-`res <- rareGWAMA.cond.single(study, imp.qual, vcf.ref.file="{$your_path}/ALL.chr9.phase3.genotypes.vcf.gz", candidateVar="9:97018619", knownVar="9:100000172", alternative="two.sided", col.impqual=5, impQual.lb=0, impQualWeight=FALSE, weight="Npq+impQ", gc=FALSE, rmMultiAllelicSite=TRUE);`      
+`res <- rareGWAMA.cond.single(score.stat.file=study, imp.qual.file=imp.qual, vcf.ref.file="{$your_path}/ALL.chr9.phase3.genotypes.vcf.gz", candidateVar="9:97018619", knownVar="9:100000172", alternative="two.sided", col.impqual=5, impQual.lb=0, impQualWeight=FALSE, weight="Npq+impQ", gc=FALSE, rmMultiAllelicSite=TRUE);`      
   
 please find more details in the [input and arguments part](#input-files) for the arguments:
-> * study: The file names of score statistic files, which could be a **vector object**;
-> * imp.qual: The file names of imputation quality, which could be a **vector object**;
+> * score.stat.file: The file names of score statistic files, which could be a **vector object**;
+> * imp.qual.file: The file names of imputation quality, which could be a **vector object**;
 > * vcf.ref.file: the file names of the reference panel file, e.g. could be downloaded from [1000 Genomes Project](ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/). 
 > * candidateVar: The tabix range;
 > * knownVar: The known variant;
@@ -93,7 +94,7 @@ please find more details in the [input and arguments part](#input-files) for the
 
 ## Input files and arguments <a name="input-files"></a> 
 
-:point_right: **All the score statistics files and imputation quality files should be tabixed.**      
+:point_right: **All the score statistics files and imputation quality files should be tabix indexed.**      
 Say if you have such files: `study1.gz(score statistics files), study2.gz, study1.R2.gz(imputation quality files), study2.R2.gz`in your folder, and already added **tabix** to your `$PATH` environment variable, you could use:   
 
 ```for file in study*;do g=`zcat $file | head -200 | grep -n CHROM | cut -f1 -d":"`; tabix -f -S $g -s 1 -b 2 -e 2 $file; done```
@@ -102,7 +103,7 @@ to tabix each file.
 
 
 ### Score statistics files:  
-if you use <sup>[1](#myfootnote1)</sup> [RVTESTS](https://github.com/zhanxw/rvtests), the output is ready to go:
+If you use <sup>[1](#myfootnote1)</sup> [RVTESTS](https://github.com/zhanxw/rvtests), the output is ready to go:
 ```
 CHROM   POS     REF     ALT     N_INFORMATIVE   AF      INFORMATIVE_ALT_AC      CALL_RATE       HWE_PVALUE      N_REF   N_HET   N_ALT   U_STAT  SQRT_V_STAT     ALT_EFFSIZE     PVALUE
 1       10177   A       AC      2352    0.5     2352    1       0       0       2352    0       1.67496 2.51553 0.264695        0.505508
@@ -112,7 +113,7 @@ CHROM   POS     REF     ALT     N_INFORMATIVE   AF      INFORMATIVE_ALT_AC      
 ```
 
 ### Imputation quality files:
-
+An example file has the following format:  
 ```
 CHROM   POS     REF     ALT     Rsq
 1       10177   A       AC      0.00581
@@ -120,10 +121,10 @@ CHROM   POS     REF     ALT     Rsq
 1       10352   T       TA      0.00608
 1       10539   C       A       0.00154
 1       10616   CCGCCGTTGCAAAGGCGCGCCG  C       0.02085
-1       10642   G       A       0.00013
-1       11008   C       G       0.01251
-1       11012   C       G       0.01252
+1       10642   G       A       0.00013reference allele
 ```
+There are five columns, which are `chromosome`, `Position`, `Reference allele`, `Alternative allele` and `R square quality`.
+
 
 ### VCF reference files: <a name="vcf-reference-files"></a>
 The file names of the reference panel file.  
