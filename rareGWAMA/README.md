@@ -123,7 +123,7 @@ CHROM   POS     REF     ALT     Rsq
 1       10616   CCGCCGTTGCAAAGGCGCGCCG  C       0.02085
 1       10642   G       A       0.00013reference allele
 ```
-There are five columns, which are `chromosome`, `Position`, `Reference allele`, `Alternative allele` and `R square quality`.
+There are five columns, which are `Chromosome #`, `Position`, `Reference allele`, `Alternative allele` and `R square quality`. The higher of `R square quality` value, the better of the genotype imputation quality.
 
 
 ### VCF reference files: <a name="vcf-reference-files"></a>
