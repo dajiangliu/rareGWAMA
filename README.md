@@ -23,8 +23,8 @@ Right now it is maintained by [Dajiang Liu's Group](https://dajiangliu.blog/).
 
 
 ## Citation
-Liu DJ*†, Peloso GM*, Zhan X*, Holmen O*, Zawistowski M, Feng S, Nikpay M, Auer PL, Goel A, Zhang H, Peters U, Farrall M, Orho-Melander M, Kooperberg C, McPherson R, Watkins H, Willer CJ, Hveem, K, Melander O, Kathiresan S, Abecasis GR
-**Meta-analysis of gene-level tests of rare variant association, Nature Genetics, 46, 200–204 (2014)**
+Liu DJ*†, Peloso GM*, Zhan X*, Holmen O*, Zawistowski M, Feng S, Nikpay M, Auer PL, Goel A, Zhang H, Peters U, Farrall M, Orho-Melander M, Kooperberg C, McPherson R, Watkins H, Willer CJ, Hveem, K, Melander O, Kathiresan S, Abecasis GR  
+**Meta-analysis of gene-level tests of rare variant association, Nature Genetics, 46, 200–204 (2014)**  
 [doi: 10.1038/ng.2852.](https://www.nature.com/articles/ng.2852)
 
 
