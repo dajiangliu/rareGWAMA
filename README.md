@@ -18,7 +18,7 @@
 
 ## Introduction
 
-rareGWAMA is a flexible software package for imputation based GWAS meta-analysis.   
+**rareGWAMA** is a flexible software package for imputation based GWAS meta-analysis.   
 It is developed and maintained by [Dajiang Liu's Group](https://dajiangliu.blog/).
 
 

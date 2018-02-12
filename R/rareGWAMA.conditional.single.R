@@ -12,12 +12,16 @@
 #' @param rmMultiAllelicSite Default is TRUE. Multi-allelic sites will be removed from the analyses if set TRUE, and a variable posMulti will be output; The variant site with multiple alleles can be analyzed using rareGWAMA.single.multiAllele function; 
 #' @return A list of analysis results;
 #' @examples 
-#' study.vec <- c("rareGWAMA/inst/extdata/study1.gz", "rareGWAMA/inst/extdata/study1.R2.gz", "rareGWAMA/inst/extdata/study3.gz");
-#' r2.vec <- c("rareGWAMA/inst/extdata/study1.R2.gz", "rareGWAMA/inst/extdata/study2.R2.gz", "rareGWAMA/inst/extdata/study3.R2.gz");
-#' res <- rareGWAMA.cond.single(score.stat.file= study.vec, imp.qual.file = r2.vec, vcf.ref.file = "rareGWAMA/inst/extdata/1kg_fra_chr1.vcf.gz", "1:10177", "1:57200", 
+#' temp <- getwd();
+#' setwd(system.file("extdata", package = "rareGWAMA"));
+#' study.vec <- c("study1.gz", "study2.gz", "study3.gz");
+#' r2.vec <- c("study1.R2.gz", "study2.R2.gz", "study3.R2.gz");
+#' res <- rareGWAMA.cond.single(score.stat.file= study.vec, imp.qual.file = r2.vec, vcf.ref.file = "1kg_fra_chr1.vcf.gz", "1:10177", "1:57200", 
 #'                              alternative="two.sided",col.impqual=5,impQual.lb=0,impQualWeight=FALSE, weight="Npq+impQ",gc=FALSE, 
 #'                              rmMultiAllelicSite=TRUE);
 #' head(res$res.formatted);
+#' setwd(temp);
+#' 
 #' @export 
 rareGWAMA.cond.single <- function(score.stat.file,imp.qual.file=NULL,vcf.ref.file,candidateVar,knownVar,alternative="two.sided",...) {
     uniq.allele <- function(x) {x.tab <- table(x);return(paste(names(x.tab),sep=',',collapse=','))}
