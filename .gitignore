@@ -1,5 +1,19 @@
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
-.Rproj
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+#  temp files#
+###################
+*~
+*.Re
