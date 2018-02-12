@@ -3,6 +3,7 @@
 **Table of Contents**
 
 - [Introduction](#introduction)
+- [Citation](#citation)
 - [Installation](#Installing-the-rareGWAMA-R-package)
 - [Quick tutorial](#quick-tutorial)
     - [Single variant tests](#Single-variant-tests)
@@ -18,7 +19,13 @@
 ## Introduction
 
 rareGWAMA is a flexible software package for imputation based GWAS meta-analysis. 
-Right now it is available as a beta version.
+Right now it is maintained by [Dajiang Liu's Group](https://dajiangliu.blog/).
+
+
+## Citation
+Liu DJ*†, Peloso GM*, Zhan X*, Holmen O*, Zawistowski M, Feng S, Nikpay M, Auer PL, Goel A, Zhang H, Peters U, Farrall M, Orho-Melander M, Kooperberg C, McPherson R, Watkins H, Willer CJ, Hveem, K, Melander O, Kathiresan S, Abecasis GR
+**Meta-analysis of gene-level tests of rare variant association, Nature Genetics, 46, 200–204 (2014)**
+[doi: 10.1038/ng.2852.](https://www.nature.com/articles/ng.2852)
 
 
 ## Installing the rareGWAMA R package <a name="Installing-the-rareGWAMA-R-package"></a>
@@ -30,7 +37,7 @@ The package is hosted on github, which allows installation and update to be very
 Then you could use:
 
     library(devtools)
-    install_github("dajiangliu/rareGWAMA", subdir ="rareGWAMA")
+    install_github("dajiangliu/rareGWAMA")
     
 With `library(rareGWAMA)`, your are ready to go!
 
