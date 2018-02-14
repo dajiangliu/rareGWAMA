@@ -149,7 +149,7 @@ For more details, please see: [How do I get a sub-section of a VCF file?](http:/
 Questions and requests can be sent to
 Github issue page ([link](https://github.com/dajiangliu/rareGWAMA/issues))
 or
-Dajiang Liu ([dajiang.liu@outlook.com](mailto:dajiang.liu@outlook.com "mailto:dajiang.liu@outlook.com"))
+Dajiang Liu ([dajiang.liu@outlook.com](mailto:dajiang.liu@outlook.com "mailto:dajiang.liu@outlook.com")) and Fang Chen([fchen1@hmc.psu.edu](mailto:fchen1@hmc.psu.edu))
 
 
 
