@@ -485,7 +485,7 @@ convertChisq2Beta <- function(statistic,beta.ori,var.y,af,N,binaryTrait=FALSE) {
     }
     if(binaryTrait==TRUE) {
         beta.out <- sign(beta.ori)*sqrt(statistic)/sqrt(2*N*af*(1-af))/sqrt(var.y);
-        beta.sd <- 1/sqrt(2*N*af*(1-af)*var.y);
+        beta.sd <- sqrt(1/sqrt(2*N*af*(1-af)*var.y));
     }
     return(list(beta.est=beta.out,
                 beta.sd=beta.sd));

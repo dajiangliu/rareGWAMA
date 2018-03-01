@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1518480267660.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1124933375",
+    "id" : "3F9A82C6",
+    "lastKnownWriteTime" : 1518480478,
+    "last_content_update" : 1518480478897,
+    "path" : "~/Projects/rareGWAMA/R/rareGWAMA.single.R",
+    "project_path" : "R/rareGWAMA.single.R",
+    "properties" : {
+        "cursorPosition" : "40,3",
+        "scrollLine" : "16"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

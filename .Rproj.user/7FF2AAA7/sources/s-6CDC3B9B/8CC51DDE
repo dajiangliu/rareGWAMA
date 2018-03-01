@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1518480402553.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3995448583",
+    "id" : "8CC51DDE",
+    "lastKnownWriteTime" : 1518480464,
+    "last_content_update" : 1518480464552,
+    "path" : "~/Projects/rareGWAMA/R/rareGWAMA.conditional.single.R",
+    "project_path" : "R/rareGWAMA.conditional.single.R",
+    "properties" : {
+        "cursorPosition" : "16,38",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
