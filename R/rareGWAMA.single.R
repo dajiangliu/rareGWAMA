@@ -139,7 +139,7 @@ rareGWAMA.single <- function(score.stat.file,imp.qual.file=NULL,tabix.range,alte
     }
     if(binaryTrait==TRUE) {
         beta.meta <- sign(ustat.meta)*sqrt(statistic.meta)/sqrt(2*nSample.meta*af.meta*(1-af.meta))/sqrt(var.y);
-        beta.sd.meta <- sqrt(1/sqrt(2*nSample.meta*af.meta*(1-af.meta)*var.y));
+        beta.sd.meta <- 1/sqrt(2*nSample.meta*af.meta*(1-af.meta)*var.y);
     }
 
     
