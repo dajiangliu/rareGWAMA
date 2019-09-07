@@ -8,6 +8,7 @@
 - [Quick tutorial](#quick-tutorial)
     - [Single variant tests](#Single-variant-tests)
     - [Conditional single variant tests](#conditional-single-variant-tests)
+    - [Gene based tests](#gene-based-tests)
 - [Input files and arguments](#input-files)
     - [Score statistic files files (Summary statistics)](#Score-statistics-files)
     - [Imputation quality files](#Imputation-quality-files)
@@ -35,9 +36,13 @@ The package is hosted on github, which allows installation and update to be very
 
     install.packages("devtools")
 
-Then you could use:
+And also, you need the latest version of [seqminer](https://github.com/zhanxw/seqminer):
 
     library(devtools)
+    devtools::install_github("zhanxw/seqminer")
+
+Then you could use:
+
     install_github("dajiangliu/rareGWAMA")
     
 With `library(rareGWAMA)`, your are ready to go!
@@ -99,6 +104,8 @@ please find more details in the [input and arguments part](#input-files) for the
 [1,] "9:97018619" "T" "C" "8.82e-05" "0.093" "0.76" "0.131" "0.428" "54235" "0"
 ```
 3. For demo data, please see `?rareGWAMA.cond.single`.
+
+### Gene based tests <a name="gene-based-tests"></a>
 
 ## Input files and arguments <a name="input-files"></a> 
 
