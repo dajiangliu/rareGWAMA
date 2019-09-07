@@ -8,6 +8,7 @@
 - [Quick tutorial](#quick-tutorial)
     - [Single variant tests](#Single-variant-tests)
     - [Conditional single variant tests](#conditional-single-variant-tests)
+    - [Gene based tests](#gene-based-tests)
 - [Input files and arguments](#input-files)
     - [Score statistic files files (Summary statistics)](#Score-statistics-files)
     - [Imputation quality files](#Imputation-quality-files)
@@ -99,6 +100,8 @@ please find more details in the [input and arguments part](#input-files) for the
 [1,] "9:97018619" "T" "C" "8.82e-05" "0.093" "0.76" "0.131" "0.428" "54235" "0"
 ```
 3. For demo data, please see `?rareGWAMA.cond.single`.
+
+### Gene based tests <a name="gene-based-tests"></a>
 
 ## Input files and arguments <a name="input-files"></a> 
 
