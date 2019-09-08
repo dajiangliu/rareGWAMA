@@ -106,6 +106,22 @@ please find more details in the [input and arguments part](#input-files) for the
 3. For demo data, please see `?rareGWAMA.cond.single`.
 
 ### Gene based tests <a name="gene-based-tests"></a>
+1.The command should be like:  
+```
+res.gene <- rareGWAMA.gene(score.stat.file, imp.qual.file=imp.qual.file, vcf.ref.file, refFileFormat="vcf.vbi", anno=anno, annoType=c('Nonsynonymous','Stop_Gain',"Essential_Splice_site"), rvtest='VT', ref.ancestry=ref.ancestry, trans.ethnic=TRUE, study.ancestry=study.ancestry, maf.cutoff=0.01);
+```
+
+please find more details in the [input and arguments part](#input-files) for the arguments:
+> * score.stat.file: The file names of score statistic files, which could be a **vector object**;
+> * imp.qual.file: The file names of imputation quality, which could be a **vector object**;
+> * vcf.ref.file: The file names of the reference panel file, e.g. could be downloaded from [1000 Genomes Project](ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/). 
+> * anno: Annotation file or list;
+> * annoType: The annotation types you want to use;
+> * rvtest: The method you want to use (i.e. 'VT', 'BURDEN', 'SKAT');
+> * ref.ancestry: The ancestry information for each sample;
+> * study.ancestry: The ancestry information for each study;
+> * maf.cutoff: The cutoff for the MAF, could be 0.01, 0.05, 0.001, whatever you want;
+
 
 ## Input files and arguments <a name="input-files"></a> 
 
@@ -149,6 +165,50 @@ Also, you could subset the ranges you want by using **tabix**, with command look
 `tabix -h ALL.2of4intersection.20100804.genotypes.vcf.gz 2:39967768-39967768`   
 
 For more details, please see: [How do I get a sub-section of a VCF file?](http://www.internationalgenome.org/faq/how-do-i-get-sub-section-vcf-file/);
+
+### Annotation files:
+```
+       chrom      pos ref alt         af          anno    gene
+112207     1 32247432   G   A 0.03425920 Nonsynonymous FAM167B
+112208     1 32247598   A   G 0.07993410          Exon FAM167B
+112209     1 32247709   G   T 0.00645166        Intron FAM167B
+112210     1 32248405   G   C 0.00290383 Nonsynonymous FAM167B
+140157     1 41479019   C   T 0.09314330          Utr3    EDN2
+140158     1 41479369   C   T 0.06422470          Utr3    EDN2
+```
+
+### Ancestry files:
+1.ref.ancestry
+You should have a original file (i.e. `ref.ancestry.ori`) as:
+```
+head(ref.ancestry.ori)
+        fid ancestry study
+1 NWD278543      HIM  HCHS
+2 NWD784564      HIM  HCHS
+3 NWD777183      HIM  HCHS
+4 NWD224967      HIM  HCHS
+5 NWD843745      HIM  HCHS
+6 NWD908814      HIM  HCHS
+```
+Then, you use:
+`ref.ancestry <- cbind(ref.ancestry.ori[,1], paste(ref.ancestry.ori[,2], ref.ancestry.ori[,3], sep=","))`
+
+So, the final format should be a *matrix*:
+```
+     [,1]        [,2]
+[1,] "NWD278543" "HIM,HCHS"
+[2,] "NWD784564" "HIM,HCHS"
+[3,] "NWD777183" "HIM,HCHS"
+[4,] "NWD224967" "HIM,HCHS"
+[5,] "NWD843745" "HIM,HCHS"
+[6,] "NWD908814" "HIM,HCHS"
+```
+
+2.study.ancestry
+Just a vector, as
+```
+[1] "AACAC" "AMISH" "ARIC"  "BAGS"  "CFS"   "CHS"
+```
 
 
 ## Feedback/Contact <a name="Feedback/Contact"></a>
