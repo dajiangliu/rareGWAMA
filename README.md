@@ -13,7 +13,8 @@
     - [Score statistic files files (Summary statistics)](#Score-statistics-files)
     - [Imputation quality files](#Imputation-quality-files)
     - [VCF reference files](#vcf-reference-files)
-    - [Alternative](#Alternative)
+    - [Annotation files](#annotation-files)
+    - [Ancestry files](#ancestry-files)
 - [Feedback/Contact](#Feedback/Contact)
 
 
@@ -23,6 +24,7 @@
 It is developed and maintained by [Dajiang Liu's Group](https://dajiangliu.blog/).
 
 
+------------------------------------------------------
 ## Citation
 Liu DJ*†, Peloso GM*, Zhan X*, Holmen O*, Zawistowski M, Feng S, Nikpay M, Auer PL, Goel A, Zhang H, Peters U, Farrall M, Orho-Melander M, Kooperberg C, McPherson R, Watkins H, Willer CJ, Hveem, K, Melander O, Kathiresan S, Abecasis GR†    
 **Meta-analysis of gene-level tests of rare variant association, Nature Genetics, 46, 200–204 (2014)**  
@@ -30,6 +32,7 @@ Liu DJ*†, Peloso GM*, Zhan X*, Holmen O*, Zawistowski M, Feng S, Nikpay M, Aue
 
 
 
+------------------------------------------------------
 ## Installing the rareGWAMA R package <a name="Installing-the-rareGWAMA-R-package"></a>
 
 The package is hosted on github, which allows installation and update to be very easy. First, make sure you have the `mvtnorm` and `data.table` packages installed:
@@ -48,6 +51,7 @@ Then you could use:
 With `library(rareGWAMA)`, your are ready to go!
 
 
+------------------------------------------------------
 ## Quick tutorial <a name="quick-tutorial"></a>
 
 ### Single variant tests <a name="Single-variant-tests"></a>
@@ -122,7 +126,17 @@ please find more details in the [input and arguments part](#input-files) for the
 > * study.ancestry: The ancestry information for each study;
 > * maf.cutoff: The cutoff for the MAF, could be 0.01, 0.05, 0.001, whatever you want;
 
+2.The out put should be as follows:  
+```
+GENE    RANGE   STAT    P-VALUE MAF_CUTOFF      NUM_VAR TOTAL_MAF       POS_VAR N       POS_SINGLE_MINP BETA_SINGLE_MINP        SD_SINGLE_MINP
+MATN2   8:97931370-98033638     2.19    0.353   0.009472856879857       3       0.0123  8:97961468_G/A,8:98018087_G/A,8:98021213_G/A    204783  8:98021213_G/A  0.01813449913
+STK3    8:98767360-98767360     0.0894  0.765   0.00582326555223991     1       0.00582 8:98767360_C/T  235921  8:98767360_C/T  0.00505283659608632     0.0168969355386225
+VPS13B  8:99121478-99853608     0.305   0.752   0.00630135839199519     2       0.0117  8:99778930_G/A,8:99820031_A/G   283684  8:99778930_G/A  0.0114882148633614      0.016
+COX6C   8:99892015-99892015     0.349   0.555   0.00244114819976761     1       0.00244 8:99892015_G/A  231499  8:99892015_G/A  -0.0159448806371386     0.0269803627402012
+```
 
+
+------------------------------------------------------
 ## Input files and arguments <a name="input-files"></a> 
 
 :point_right: **All the score statistics files and imputation quality files should be tabix indexed.**      
@@ -166,7 +180,7 @@ Also, you could subset the ranges you want by using **tabix**, with command look
 
 For more details, please see: [How do I get a sub-section of a VCF file?](http://www.internationalgenome.org/faq/how-do-i-get-sub-section-vcf-file/);
 
-### Annotation files:
+### Annotation files: <a name="annotation-files"></a>
 ```
        chrom      pos ref alt         af          anno    gene
 112207     1 32247432   G   A 0.03425920 Nonsynonymous FAM167B
@@ -177,8 +191,9 @@ For more details, please see: [How do I get a sub-section of a VCF file?](http:/
 140158     1 41479369   C   T 0.06422470          Utr3    EDN2
 ```
 
-### Ancestry files:
-1.ref.ancestry
+### Ancestry files: <a name="ancestry-files"></a>
+1.ref.ancestry. 
+
 You should have a original file (i.e. `ref.ancestry.ori`) as:
 ```
 head(ref.ancestry.ori)
@@ -204,13 +219,15 @@ So, the final format should be a *matrix*:
 [6,] "NWD908814" "HIM,HCHS"
 ```
 
-2.study.ancestry
+2.study.ancestry.  
+
 Just a vector, as
 ```
 [1] "AACAC" "AMISH" "ARIC"  "BAGS"  "CFS"   "CHS"
 ```
 
 
+------------------------------------------------------
 ## Feedback/Contact <a name="Feedback/Contact"></a>
 
 Questions and requests can be sent to
@@ -220,6 +237,7 @@ Dajiang Liu ([dajiang.liu@outlook.com](mailto:dajiang.liu@outlook.com "mailto:da
 
 
 
+------------------------------------------------------
 ## References
 
 <a name="myfootnote1">1</a>: Xiaowei Zhan, Youna Hu, Bingshan Li, Goncalo R. Abecasis, and Dajiang J. Liu       
