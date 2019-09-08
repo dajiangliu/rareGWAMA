@@ -198,12 +198,12 @@ You should have a original file (i.e. `ref.ancestry.ori`) as:
 ```
 head(ref.ancestry.ori)
         fid ancestry study
-1 NWD278543      HIM  HCHS
-2 NWD784564      HIM  HCHS
-3 NWD777183      HIM  HCHS
-4 NWD224967      HIM  HCHS
-5 NWD843745      HIM  HCHS
-6 NWD908814      HIM  HCHS
+1 samp1      HIM  HCHS
+2 samp2      HIM  HCHS
+3 samp3      HIM  HCHS
+4 samp4      HIM  HCHS
+5 samp5      HIM  HCHS
+6 samp6      HIM  HCHS
 ```
 Then, you use:
 `ref.ancestry <- cbind(ref.ancestry.ori[,1], paste(ref.ancestry.ori[,2], ref.ancestry.ori[,3], sep=","))`
@@ -211,12 +211,12 @@ Then, you use:
 So, the final format should be a *matrix*:
 ```
      [,1]        [,2]
-[1,] "NWD278543" "HIM,HCHS"
-[2,] "NWD784564" "HIM,HCHS"
-[3,] "NWD777183" "HIM,HCHS"
-[4,] "NWD224967" "HIM,HCHS"
-[5,] "NWD843745" "HIM,HCHS"
-[6,] "NWD908814" "HIM,HCHS"
+[1,] "samp1" "HIM,HCHS"
+[2,] "samp2" "HIM,HCHS"
+[3,] "samp3" "HIM,HCHS"
+[4,] "samp4" "HIM,HCHS"
+[5,] "samp5" "HIM,HCHS"
+[6,] "samp6" "HIM,HCHS"
 ```
 
 2.study.ancestry.  
