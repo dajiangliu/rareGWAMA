@@ -110,6 +110,9 @@ please find more details in the [input and arguments part](#input-files) for the
 3. For demo data, please see `?rareGWAMA.cond.single`.
 
 ### Gene based tests <a name="gene-based-tests"></a>
+
+**For more details, please see the [SHOWCASE](https://funfunchen.github.io/pages/rareGWAMA_page)**
+
 1.The command should be like:  
 ```
 res.gene <- rareGWAMA.gene(score.stat.file, imp.qual.file=imp.qual.file, vcf.ref.file, refFileFormat="vcf.vbi", anno=anno, annoType=c('Nonsynonymous','Stop_Gain',"Essential_Splice_site"), rvtest='VT', ref.ancestry=ref.ancestry, trans.ethnic=TRUE, study.ancestry=study.ancestry, maf.cutoff=0.01);
